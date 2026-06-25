@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sovereign City | Freedom • Privacy • Prosperity</title>
+  <meta name="description" content="Sovereign City helps people reclaim control of their money, data and future through privacy, digital sovereignty and financial resilience." />
+  <style>
+    :root {
+      --bg: #05020c;
+      --text: #f7f2ff;
+      --muted: #b7a9cf;
+      --pink: #ff3df2;
+      --cyan: #38e8ff;
+      --violet: #7b38ff;
+      --gold: #f7c76b;
+      --border: rgba(255,255,255,0.16);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        linear-gradient(180deg, rgba(5,2,12,0.50), rgba(5,2,12,0.94)),
+        url("assets/sovereign-city-bg.png") center/cover fixed no-repeat,
+        radial-gradient(circle at 50% 15%, rgba(255,61,242,.22), transparent 40%),
+        #05020c;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 35%, transparent 100%);
+      pointer-events: none;
+    }
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      min-height: 100vh;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 48px 0;
+      text-align: center;
+      position: relative;
+    }
+    .orb {
+      position: absolute;
+      width: 430px;
+      height: 430px;
+      border-radius: 999px;
+      filter: blur(70px);
+      opacity: .35;
+      z-index: -1;
+      animation: pulse 6s ease-in-out infinite;
+    }
+    .orb.one { background: var(--pink); top: 8%; left: -12%; }
+    .orb.two { background: var(--cyan); bottom: 8%; right: -14%; animation-delay: 1.5s; }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: .27; }
+      50% { transform: scale(1.08); opacity: .45; }
+    }
+    .card {
+      width: min(860px, 100%);
+      padding: clamp(28px, 5vw, 56px);
+      border: 1px solid var(--border);
+      border-radius: 36px;
+      background: linear-gradient(180deg, rgba(12,8,28,.74), rgba(6,3,15,.58));
+      box-shadow: 0 0 70px rgba(123,56,255,.22), inset 0 1px 0 rgba(255,255,255,.08);
+      backdrop-filter: blur(18px);
+    }
+    .logo {
+      width: min(230px, 58vw);
+      aspect-ratio: 1/1;
+      object-fit: contain;
+      margin: 0 auto 22px;
+      display: block;
+      filter: drop-shadow(0 0 26px rgba(255,61,242,.4));
+      border-radius: 999px;
+    }
+    .eyebrow {
+      letter-spacing: .34em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      font-size: 0.78rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(3.1rem, 9vw, 6.6rem);
+      line-height: .92;
+      letter-spacing: -.055em;
+      text-transform: uppercase;
+      text-shadow: 0 0 18px rgba(255,61,242,.34), 0 0 40px rgba(56,232,255,.18);
+    }
+    .tagline {
+      margin: 18px auto 0;
+      font-size: clamp(1.04rem, 2.8vw, 1.38rem);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 800;
+    }
+    .copy {
+      max-width: 690px;
+      margin: 22px auto 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 2.2vw, 1.18rem);
+      line-height: 1.7;
+    }
+    .buttons {
+      margin: 34px auto 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 28px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.18);
+      color: white;
+      text-decoration: none;
+      font-weight: 850;
+      letter-spacing: .02em;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .btn.primary {
+      background: linear-gradient(135deg, var(--pink), var(--violet));
+      box-shadow: 0 0 34px rgba(255,61,242,.42);
+    }
+    .btn.secondary {
+      background: rgba(255,255,255,.055);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(56,232,255,.65);
+      box-shadow: 0 0 42px rgba(56,232,255,.32);
+    }
+    .pillars {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .pillar {
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      padding: 16px 14px;
+      background: rgba(255,255,255,.045);
+      color: #efe9ff;
+      font-size: .92rem;
+      font-weight: 750;
+    }
+    footer {
+      margin-top: 26px;
+      color: rgba(255,255,255,.52);
+      font-size: .86rem;
+    }
+    @media (max-width: 640px) {
+      .page { width: min(100% - 22px, 1120px); padding: 28px 0; }
+      .card { border-radius: 26px; }
+      .logo { width: min(190px, 62vw); }
+      .tagline { letter-spacing: .09em; }
+      .buttons { flex-direction: column; }
+      .btn { width: 100%; }
+      .pillars { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <section class="card">
+      <img class="logo" src="assets/sovereign-city-logo.png" alt="Sovereign City logo" />
+      <div class="eyebrow">The Dispatch</div>
+      <h1>Sovereign City</h1>
+      <div class="tagline">Freedom • Privacy • Prosperity</div>
+      <p class="copy">
+        Helping people reclaim control of their money, data and future.
+        Join the Dispatch for clear intelligence on privacy, digital sovereignty,
+        financial resilience, AI, surveillance and the tools building a freer future.
+      </p>
+      <div class="buttons">
+        <a class="btn primary" href="https://www.sovereigncity.xyz/subscribe">Join the Dispatch</a>
+        <a class="btn secondary" href="https://www.sovereigncity.xyz/p/welcome-to-sovereign-city">Read the Mission</a>
+      </div>
+      <div class="pillars">
+        <div class="pillar">🔒 Privacy</div>
+        <div class="pillar">💰 Financial Sovereignty</div>
+        <div class="pillar">🏙️ Digital Resilience</div>
+      </div>
+    </section>
+    <footer>Sovereign City © 2026 • Built for sovereign individuals</footer>
+  </main>
+</body>
+</html>
