@@ -3,210 +3,573 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sovereign City | Freedom • Privacy • Prosperity</title>
-  <meta name="description" content="Sovereign City helps people reclaim control of their money, data and future through privacy, digital sovereignty and financial resilience." />
+
+  <title>Sovereign City | Live by Design. Not by Default.</title>
+  <meta name="description" content="Sovereign City explores the ideas, tools and technologies that empower you to build a life of greater freedom, resilience and independence." />
+
   <style>
     :root {
-      --bg: #05020c;
-      --text: #f7f2ff;
-      --muted: #b7a9cf;
-      --pink: #ff3df2;
-      --cyan: #38e8ff;
-      --violet: #7b38ff;
-      --gold: #f7c76b;
-      --border: rgba(255,255,255,0.16);
+      --bg: #04030a;
+      --text: #f8f5ff;
+      --soft: #c8bddb;
+      --pink: #ff38f5;
+      --violet: #7c3cff;
+      --cyan: #35e9ff;
+      --gold: #f8c76b;
+      --line: rgba(255,255,255,0.14);
+      --shadow: 0 30px 100px rgba(0,0,0,0.48);
     }
+
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
       background:
-        linear-gradient(180deg, rgba(5,2,12,0.50), rgba(5,2,12,0.94)),
+        radial-gradient(circle at 50% 0%, rgba(255, 56, 245, 0.19), transparent 34%),
+        radial-gradient(circle at 80% 20%, rgba(53, 233, 255, 0.10), transparent 24%),
+        linear-gradient(180deg, rgba(4,3,10,0.46), rgba(4,3,10,0.96) 72%),
         url("assets/sovereign-city-bg.png") center/cover fixed no-repeat,
-        radial-gradient(circle at 50% 15%, rgba(255,61,242,.22), transparent 40%),
-        #05020c;
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       overflow-x: hidden;
     }
+
     body::before {
       content: "";
       position: fixed;
       inset: 0;
-      background:
-        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
-      background-size: 46px 46px;
-      mask-image: linear-gradient(to bottom, transparent 0%, black 35%, transparent 100%);
       pointer-events: none;
+      background:
+        linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 32%, transparent 100%);
+      opacity: 0.8;
     }
-    .page {
-      width: min(1120px, calc(100% - 32px));
-      min-height: 100vh;
+
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
       margin: 0 auto;
+    }
+
+    .nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(980px, calc(100% - 28px));
+      z-index: 10;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
-      padding: 48px 0;
-      text-align: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(6,4,14,.58);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 12px 40px rgba(0,0,0,.22);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 850;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: .78rem;
+    }
+
+    .brand img {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      object-fit: cover;
+      filter: drop-shadow(0 0 12px rgba(255,56,245,.38));
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .navlinks a {
+      color: var(--soft);
+      text-decoration: none;
+      font-size: .86rem;
+      font-weight: 700;
+      padding: 9px 13px;
+      border-radius: 999px;
+    }
+
+    .navlinks a:hover {
+      color: white;
+      background: rgba(255,255,255,.08);
+    }
+
+    .navlinks .join {
+      color: white;
+      background: linear-gradient(135deg, var(--pink), var(--violet));
+      box-shadow: 0 0 24px rgba(255,56,245,.28);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 118px 0 74px;
       position: relative;
     }
-    .orb {
+
+    .hero-card {
+      width: min(990px, 100%);
+      text-align: center;
+      padding: clamp(34px, 6vw, 72px);
+      border-radius: clamp(28px, 5vw, 52px);
+      border: 1px solid rgba(255,255,255,.16);
+      background:
+        linear-gradient(180deg, rgba(18,14,38,.72), rgba(6,4,16,.56)),
+        linear-gradient(135deg, rgba(255,56,245,.10), rgba(53,233,255,.05));
+      box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,.08);
+      backdrop-filter: blur(22px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
       position: absolute;
-      width: 430px;
-      height: 430px;
-      border-radius: 999px;
-      filter: blur(70px);
-      opacity: .35;
-      z-index: -1;
-      animation: pulse 6s ease-in-out infinite;
+      inset: -2px;
+      border-radius: inherit;
+      background: radial-gradient(circle at 50% 0%, rgba(255,56,245,.28), transparent 38%),
+                  radial-gradient(circle at 80% 20%, rgba(53,233,255,.14), transparent 30%);
+      pointer-events: none;
+      opacity: .8;
     }
-    .orb.one { background: var(--pink); top: 8%; left: -12%; }
-    .orb.two { background: var(--cyan); bottom: 8%; right: -14%; animation-delay: 1.5s; }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: .27; }
-      50% { transform: scale(1.08); opacity: .45; }
-    }
-    .card {
-      width: min(860px, 100%);
-      padding: clamp(28px, 5vw, 56px);
-      border: 1px solid var(--border);
-      border-radius: 36px;
-      background: linear-gradient(180deg, rgba(12,8,28,.74), rgba(6,3,15,.58));
-      box-shadow: 0 0 70px rgba(123,56,255,.22), inset 0 1px 0 rgba(255,255,255,.08);
-      backdrop-filter: blur(18px);
-    }
+
+    .hero-inner { position: relative; z-index: 1; }
+
     .logo {
-      width: min(230px, 58vw);
+      width: min(170px, 44vw);
       aspect-ratio: 1/1;
       object-fit: contain;
-      margin: 0 auto 22px;
-      display: block;
-      filter: drop-shadow(0 0 26px rgba(255,61,242,.4));
       border-radius: 999px;
+      margin: 0 auto 28px;
+      display: block;
+      filter: drop-shadow(0 0 30px rgba(255,56,245,.44));
+      animation: breathe 5s ease-in-out infinite;
     }
-    .eyebrow {
-      letter-spacing: .34em;
-      text-transform: uppercase;
+
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 24px rgba(255,56,245,.38)); }
+      50% { transform: scale(1.025); filter: drop-shadow(0 0 42px rgba(53,233,255,.32)); }
+    }
+
+    .kicker {
       color: var(--cyan);
-      font-size: 0.78rem;
-      font-weight: 800;
-      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: .36em;
+      font-size: .75rem;
+      font-weight: 900;
+      margin-bottom: 16px;
     }
+
     h1 {
       margin: 0;
-      font-size: clamp(3.1rem, 9vw, 6.6rem);
-      line-height: .92;
-      letter-spacing: -.055em;
+      font-size: clamp(3.6rem, 9vw, 8.2rem);
+      line-height: .88;
+      letter-spacing: -.075em;
       text-transform: uppercase;
-      text-shadow: 0 0 18px rgba(255,61,242,.34), 0 0 40px rgba(56,232,255,.18);
+      text-shadow:
+        0 0 18px rgba(255,56,245,.34),
+        0 0 44px rgba(53,233,255,.18);
     }
-    .tagline {
-      margin: 18px auto 0;
-      font-size: clamp(1.04rem, 2.8vw, 1.38rem);
-      letter-spacing: .18em;
-      text-transform: uppercase;
+
+    h1 span {
+      display: block;
+      color: transparent;
+      -webkit-text-stroke: 1.2px rgba(255,255,255,.82);
+      text-shadow: 0 0 30px rgba(255,255,255,.12);
+      margin-top: .08em;
+    }
+
+    .pillars-line {
+      margin: 24px auto 0;
       color: var(--gold);
-      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-weight: 900;
+      font-size: clamp(.86rem, 2vw, 1.04rem);
     }
-    .copy {
-      max-width: 690px;
-      margin: 22px auto 0;
-      color: var(--muted);
-      font-size: clamp(1rem, 2.2vw, 1.18rem);
-      line-height: 1.7;
+
+    .hero-copy {
+      max-width: 790px;
+      margin: 28px auto 0;
+      color: var(--soft);
+      font-size: clamp(1.02rem, 2.2vw, 1.25rem);
+      line-height: 1.75;
     }
+
+    .hero-copy strong {
+      color: white;
+      font-weight: 900;
+    }
+
     .buttons {
-      margin: 34px auto 0;
+      margin-top: 38px;
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
+      flex-wrap: wrap;
       gap: 14px;
     }
+
     .btn {
+      min-height: 56px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 54px;
-      padding: 0 28px;
+      padding: 0 30px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.18);
-      color: white;
       text-decoration: none;
-      font-weight: 850;
-      letter-spacing: .02em;
-      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      color: white;
+      font-weight: 900;
+      border: 1px solid rgba(255,255,255,.18);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
     }
-    .btn.primary {
+
+    .btn-primary {
       background: linear-gradient(135deg, var(--pink), var(--violet));
-      box-shadow: 0 0 34px rgba(255,61,242,.42);
+      box-shadow: 0 0 36px rgba(255,56,245,.38);
     }
-    .btn.secondary {
-      background: rgba(255,255,255,.055);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+
+    .btn-secondary {
+      background: rgba(255,255,255,.06);
+      color: var(--text);
     }
+
     .btn:hover {
       transform: translateY(-2px);
-      border-color: rgba(56,232,255,.65);
-      box-shadow: 0 0 42px rgba(56,232,255,.32);
+      border-color: rgba(53,233,255,.62);
+      box-shadow: 0 0 44px rgba(53,233,255,.28);
     }
-    .pillars {
-      margin-top: 32px;
+
+    .scroll {
+      margin-top: 34px;
+      color: rgba(255,255,255,.54);
+      font-size: .82rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    section {
+      padding: 92px 0;
+      position: relative;
+    }
+
+    .section-title {
+      text-align: center;
+      margin: 0 auto 18px;
+      font-size: clamp(2rem, 5vw, 4.2rem);
+      line-height: 1;
+      letter-spacing: -.055em;
+      text-transform: uppercase;
+    }
+
+    .section-copy {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+      color: var(--soft);
+      line-height: 1.75;
+      font-size: 1.08rem;
+    }
+
+    .manifesto {
+      border-top: 1px solid rgba(255,255,255,.09);
+      border-bottom: 1px solid rgba(255,255,255,.09);
+      background: linear-gradient(180deg, rgba(5,3,14,.32), rgba(5,3,14,.74));
+    }
+
+    .manifesto-grid {
+      margin-top: 42px;
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
     }
-    .pillar {
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 18px;
-      padding: 16px 14px;
+
+    .choice-card, .pillar-card {
+      border: 1px solid rgba(255,255,255,.13);
       background: rgba(255,255,255,.045);
-      color: #efe9ff;
-      font-size: .92rem;
-      font-weight: 750;
+      border-radius: 26px;
+      padding: 26px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.07);
+      backdrop-filter: blur(14px);
     }
+
+    .choice-card h3, .pillar-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.2rem;
+    }
+
+    .choice-card p, .pillar-card p {
+      margin: 0;
+      color: var(--soft);
+      line-height: 1.65;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+      margin-top: 42px;
+    }
+
+    .pillar-card {
+      padding: 22px;
+      min-height: 210px;
+    }
+
+    .icon {
+      font-size: 1.65rem;
+      margin-bottom: 18px;
+    }
+
+    .quote {
+      text-align: center;
+      padding: 96px 0 116px;
+    }
+
+    .quote blockquote {
+      margin: 0 auto;
+      max-width: 920px;
+      font-size: clamp(2.2rem, 6vw, 5.2rem);
+      line-height: .98;
+      letter-spacing: -.065em;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    .quote span {
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,.72);
+    }
+
     footer {
-      margin-top: 26px;
-      color: rgba(255,255,255,.52);
-      font-size: .86rem;
+      padding: 32px 0 42px;
+      border-top: 1px solid rgba(255,255,255,.09);
+      color: rgba(255,255,255,.54);
+      font-size: .92rem;
     }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,.66);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover { color: white; }
+
+    @media (max-width: 980px) {
+      .manifesto-grid { grid-template-columns: 1fr; }
+      .pillars { grid-template-columns: repeat(2, 1fr); }
+    }
+
     @media (max-width: 640px) {
-      .page { width: min(100% - 22px, 1120px); padding: 28px 0; }
-      .card { border-radius: 26px; }
-      .logo { width: min(190px, 62vw); }
-      .tagline { letter-spacing: .09em; }
+      .nav {
+        top: 10px;
+        width: calc(100% - 16px);
+      }
+
+      .brand span { display: none; }
+      .navlinks a:not(.join) { display: none; }
+
+      .hero { padding-top: 92px; }
+
+      .hero-card {
+        border-radius: 28px;
+        padding: 30px 20px;
+      }
+
+      .kicker { letter-spacing: .22em; }
+
+      h1 { font-size: clamp(3.2rem, 16vw, 5.2rem); }
+
+      .pillars-line {
+        letter-spacing: .06em;
+        line-height: 1.55;
+      }
+
       .buttons { flex-direction: column; }
       .btn { width: 100%; }
+
+      section { padding: 68px 0; }
       .pillars { grid-template-columns: 1fr; }
+      .pillar-card { min-height: auto; }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
     }
   </style>
 </head>
+
 <body>
-  <main class="page">
-    <div class="orb one"></div>
-    <div class="orb two"></div>
-    <section class="card">
-      <img class="logo" src="assets/sovereign-city-logo.png" alt="Sovereign City logo" />
-      <div class="eyebrow">The Dispatch</div>
-      <h1>Sovereign City</h1>
-      <div class="tagline">Freedom • Privacy • Prosperity</div>
-      <p class="copy">
-        Helping people reclaim control of their money, data and future.
-        Join the Dispatch for clear intelligence on privacy, digital sovereignty,
-        financial resilience, AI, surveillance and the tools building a freer future.
-      </p>
-      <div class="buttons">
-        <a class="btn primary" href="https://www.sovereigncity.xyz/subscribe">Join the Dispatch</a>
-        <a class="btn secondary" href="https://www.sovereigncity.xyz/p/welcome-to-sovereign-city">Read the Mission</a>
-      </div>
-      <div class="pillars">
-        <div class="pillar">🔒 Privacy</div>
-        <div class="pillar">💰 Financial Sovereignty</div>
-        <div class="pillar">🏙️ Digital Resilience</div>
+  <nav class="nav">
+    <a class="brand" href="#">
+      <img src="assets/sovereign-city-logo.png" alt="Sovereign City">
+      <span>Sovereign City</span>
+    </a>
+
+    <div class="navlinks">
+      <a href="#manifesto">Manifesto</a>
+      <a href="#pillars">Pillars</a>
+      <a class="join" href="https://www.sovereigncity.xyz/subscribe">Join</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-card">
+          <div class="hero-inner">
+            <img class="logo" src="assets/sovereign-city-logo.png" alt="Sovereign City logo">
+
+            <div class="kicker">The Sovereign Dispatch</div>
+
+            <h1>
+              Live by Design.
+              <span>Not by Default.</span>
+            </h1>
+
+            <div class="pillars-line">
+              Privacy • Financial Sovereignty • Digital Independence
+            </div>
+
+            <p class="hero-copy">
+              <strong>In today's world, freedom isn't something you're given.</strong>
+              It's something you build—one deliberate decision at a time.
+              Sovereign City explores the ideas, tools and technologies that empower you to build a life of greater freedom, resilience and independence.
+            </p>
+
+            <div class="buttons">
+              <a class="btn btn-primary" href="https://www.sovereigncity.xyz/subscribe">Join the Dispatch</a>
+              <a class="btn btn-secondary" href="https://www.sovereigncity.xyz/p/welcome-to-sovereign-city">Read the Manifesto</a>
+            </div>
+
+            <div class="scroll">Begin the city ↓</div>
+          </div>
+        </div>
       </div>
     </section>
-    <footer>Sovereign City © 2026 • Built for sovereign individuals</footer>
+
+    <section class="manifesto" id="manifesto">
+      <div class="wrap">
+        <h2 class="section-title">Every freedom begins with a choice.</h2>
+        <p class="section-copy">
+          Sovereign City is built for people who want to think more deliberately,
+          reduce unnecessary dependence, and make better decisions about their money,
+          data, technology, location and future.
+        </p>
+
+        <div class="manifesto-grid">
+          <div class="choice-card">
+            <h3>Not fear. Preparation.</h3>
+            <p>We don't believe in panic. We believe in practical steps that make you more capable, private and resilient.</p>
+          </div>
+
+          <div class="choice-card">
+            <h3>Not ideology. Agency.</h3>
+            <p>We don't tell people what to think. We explore tools and ideas that help people think and choose more deliberately.</p>
+          </div>
+
+          <div class="choice-card">
+            <h3>Not escape. Design.</h3>
+            <p>Sovereignty isn't about disappearing from the world. It's about building more freedom and optionality within it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pillars">
+      <div class="wrap">
+        <h2 class="section-title">The Five Pillars</h2>
+        <p class="section-copy">
+          Sovereign City explores the foundations of a more independent, intentional and resilient life.
+        </p>
+
+        <div class="pillars">
+          <div class="pillar-card">
+            <div class="icon">🔒</div>
+            <h3>Privacy</h3>
+            <p>Protect your data, communications, identity and attention.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="icon">💰</div>
+            <h3>Financial Sovereignty</h3>
+            <p>Own your assets, build optionality and reduce unnecessary dependence.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="icon">🌍</div>
+            <h3>Geographic Freedom</h3>
+            <p>Think intentionally about where you live, work and build your future.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="icon">🤖</div>
+            <h3>Digital Independence</h3>
+            <p>Use technology deliberately instead of letting defaults shape your life.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="icon">🧠</div>
+            <h3>Personal Resilience</h3>
+            <p>Develop the mindset, habits and knowledge to thrive in uncertainty.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote">
+      <div class="wrap">
+        <blockquote>
+          We don't tell people what to think.
+          <span>We help them think deliberately.</span>
+        </blockquote>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div>Sovereign City © 2026 • Freedom • Privacy • Prosperity</div>
+      <div class="footer-links">
+        <a href="https://www.sovereigncity.xyz/subscribe">Newsletter</a>
+        <a href="https://www.sovereigncity.xyz/p/welcome-to-sovereign-city">Manifesto</a>
+        <a href="#">X</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
