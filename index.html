@@ -12,12 +12,14 @@
       --bg: #04030a;
       --text: #f8f5ff;
       --soft: #c8bddb;
+      --muted: #8f82a8;
       --pink: #ff38f5;
       --violet: #7c3cff;
       --cyan: #35e9ff;
       --gold: #f8c76b;
-      --line: rgba(255,255,255,0.14);
-      --shadow: 0 30px 100px rgba(0,0,0,0.48);
+      --line: rgba(255,255,255,0.13);
+      --panel: rgba(10, 8, 22, 0.60);
+      --shadow: 0 32px 120px rgba(0,0,0,0.54);
     }
 
     * { box-sizing: border-box; }
@@ -27,9 +29,9 @@
       margin: 0;
       min-height: 100vh;
       background:
-        radial-gradient(circle at 50% 0%, rgba(255, 56, 245, 0.19), transparent 34%),
-        radial-gradient(circle at 80% 20%, rgba(53, 233, 255, 0.10), transparent 24%),
-        linear-gradient(180deg, rgba(4,3,10,0.46), rgba(4,3,10,0.96) 72%),
+        radial-gradient(circle at 50% 0%, rgba(255, 56, 245, 0.12), transparent 30%),
+        radial-gradient(circle at 82% 12%, rgba(53, 233, 255, 0.07), transparent 22%),
+        linear-gradient(180deg, rgba(4,3,10,0.68), rgba(4,3,10,0.985) 76%),
         url("assets/sovereign-city-bg.png") center/cover fixed no-repeat,
         var(--bg);
       color: var(--text);
@@ -43,15 +45,15 @@
       inset: 0;
       pointer-events: none;
       background:
-        linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px);
-      background-size: 54px 54px;
-      mask-image: linear-gradient(to bottom, transparent 0%, black 32%, transparent 100%);
-      opacity: 0.8;
+        linear-gradient(rgba(255,255,255,.021) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.021) 1px, transparent 1px);
+      background-size: 58px 58px;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 34%, transparent 100%);
+      opacity: 0.72;
     }
 
     .wrap {
-      width: min(1180px, calc(100% - 32px));
+      width: min(1180px, calc(100% - 36px));
       margin: 0 auto;
     }
 
@@ -65,12 +67,12 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12px 14px;
+      padding: 11px 14px;
       border: 1px solid var(--line);
       border-radius: 999px;
-      background: rgba(6,4,14,.58);
-      backdrop-filter: blur(18px);
-      box-shadow: 0 12px 40px rgba(0,0,0,.22);
+      background: rgba(5,3,12,.68);
+      backdrop-filter: blur(22px);
+      box-shadow: 0 14px 44px rgba(0,0,0,.28);
     }
 
     .brand {
@@ -80,7 +82,7 @@
       color: var(--text);
       text-decoration: none;
       font-weight: 850;
-      letter-spacing: .08em;
+      letter-spacing: .09em;
       text-transform: uppercase;
       font-size: .78rem;
     }
@@ -90,7 +92,7 @@
       height: 34px;
       border-radius: 999px;
       object-fit: cover;
-      filter: drop-shadow(0 0 12px rgba(255,56,245,.38));
+      filter: drop-shadow(0 0 10px rgba(255,56,245,.28));
     }
 
     .navlinks {
@@ -100,44 +102,47 @@
     }
 
     .navlinks a {
-      color: var(--soft);
+      color: rgba(248,245,255,.74);
       text-decoration: none;
       font-size: .86rem;
-      font-weight: 700;
+      font-weight: 750;
       padding: 9px 13px;
       border-radius: 999px;
+      transition: color .2s ease, background .2s ease, transform .2s ease;
     }
 
     .navlinks a:hover {
       color: white;
-      background: rgba(255,255,255,.08);
+      background: rgba(255,255,255,.07);
+      transform: translateY(-1px);
     }
 
     .navlinks .join {
       color: white;
       background: linear-gradient(135deg, var(--pink), var(--violet));
-      box-shadow: 0 0 24px rgba(255,56,245,.28);
+      box-shadow: 0 0 26px rgba(255,56,245,.30);
+      padding-inline: 18px;
     }
 
     .hero {
       min-height: 100vh;
       display: grid;
       place-items: center;
-      padding: 118px 0 74px;
+      padding: 132px 0 98px;
       position: relative;
     }
 
     .hero-card {
-      width: min(990px, 100%);
+      width: min(1030px, 100%);
       text-align: center;
-      padding: clamp(34px, 6vw, 72px);
-      border-radius: clamp(28px, 5vw, 52px);
-      border: 1px solid rgba(255,255,255,.16);
+      padding: clamp(38px, 6vw, 76px) clamp(24px, 6vw, 68px);
+      border-radius: clamp(28px, 5vw, 50px);
+      border: 1px solid rgba(255,255,255,.145);
       background:
-        linear-gradient(180deg, rgba(18,14,38,.72), rgba(6,4,16,.56)),
-        linear-gradient(135deg, rgba(255,56,245,.10), rgba(53,233,255,.05));
-      box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,.08);
-      backdrop-filter: blur(22px);
+        linear-gradient(180deg, rgba(16,12,34,.66), rgba(5,3,14,.54)),
+        linear-gradient(135deg, rgba(255,56,245,.055), rgba(53,233,255,.025));
+      box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,.07);
+      backdrop-filter: blur(24px);
       position: relative;
       overflow: hidden;
     }
@@ -147,73 +152,64 @@
       position: absolute;
       inset: -2px;
       border-radius: inherit;
-      background: radial-gradient(circle at 50% 0%, rgba(255,56,245,.28), transparent 38%),
-                  radial-gradient(circle at 80% 20%, rgba(53,233,255,.14), transparent 30%);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,56,245,.15), transparent 34%),
+        radial-gradient(circle at 86% 18%, rgba(53,233,255,.08), transparent 28%);
       pointer-events: none;
-      opacity: .8;
     }
 
     .hero-inner { position: relative; z-index: 1; }
 
     .logo {
-      width: min(170px, 44vw);
+      width: min(118px, 33vw);
       aspect-ratio: 1/1;
       object-fit: contain;
       border-radius: 999px;
-      margin: 0 auto 28px;
+      margin: 0 auto 30px;
       display: block;
-      filter: drop-shadow(0 0 30px rgba(255,56,245,.44));
-      animation: breathe 5s ease-in-out infinite;
+      filter: drop-shadow(0 0 20px rgba(255,56,245,.34));
+      animation: breathe 6s ease-in-out infinite;
     }
 
     @keyframes breathe {
-      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 24px rgba(255,56,245,.38)); }
-      50% { transform: scale(1.025); filter: drop-shadow(0 0 42px rgba(53,233,255,.32)); }
-    }
-
-    .kicker {
-      color: var(--cyan);
-      text-transform: uppercase;
-      letter-spacing: .36em;
-      font-size: .75rem;
-      font-weight: 900;
-      margin-bottom: 16px;
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 18px rgba(255,56,245,.30)); }
+      50% { transform: scale(1.018); filter: drop-shadow(0 0 28px rgba(53,233,255,.22)); }
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(3.6rem, 9vw, 8.2rem);
-      line-height: .88;
-      letter-spacing: -.075em;
+      font-size: clamp(3.9rem, 9vw, 8.9rem);
+      line-height: .86;
+      letter-spacing: -.082em;
       text-transform: uppercase;
       text-shadow:
-        0 0 18px rgba(255,56,245,.34),
-        0 0 44px rgba(53,233,255,.18);
+        0 0 13px rgba(255,56,245,.18),
+        0 0 34px rgba(53,233,255,.10);
     }
 
     h1 span {
       display: block;
       color: transparent;
-      -webkit-text-stroke: 1.2px rgba(255,255,255,.82);
-      text-shadow: 0 0 30px rgba(255,255,255,.12);
+      -webkit-text-stroke: 1.15px rgba(255,255,255,.78);
+      text-shadow: none;
       margin-top: .08em;
     }
 
     .pillars-line {
-      margin: 24px auto 0;
+      margin: 28px auto 0;
       color: var(--gold);
       text-transform: uppercase;
-      letter-spacing: .16em;
+      letter-spacing: .17em;
       font-weight: 900;
-      font-size: clamp(.86rem, 2vw, 1.04rem);
+      font-size: clamp(.82rem, 1.85vw, 1rem);
     }
 
     .hero-copy {
-      max-width: 790px;
-      margin: 28px auto 0;
+      max-width: 690px;
+      margin: 30px auto 0;
       color: var(--soft);
-      font-size: clamp(1.02rem, 2.2vw, 1.25rem);
-      line-height: 1.75;
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      line-height: 1.72;
     }
 
     .hero-copy strong {
@@ -222,7 +218,7 @@
     }
 
     .buttons {
-      margin-top: 38px;
+      margin-top: 40px;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
@@ -234,87 +230,101 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0 30px;
+      padding: 0 31px;
       border-radius: 999px;
       text-decoration: none;
       color: white;
       font-weight: 900;
-      border: 1px solid rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.16);
       transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
     }
 
     .btn-primary {
       background: linear-gradient(135deg, var(--pink), var(--violet));
-      box-shadow: 0 0 36px rgba(255,56,245,.38);
+      box-shadow: 0 0 32px rgba(255,56,245,.32);
     }
 
     .btn-secondary {
-      background: rgba(255,255,255,.06);
+      background: rgba(255,255,255,.052);
       color: var(--text);
     }
 
     .btn:hover {
       transform: translateY(-2px);
-      border-color: rgba(53,233,255,.62);
-      box-shadow: 0 0 44px rgba(53,233,255,.28);
+      border-color: rgba(53,233,255,.56);
+      box-shadow: 0 0 38px rgba(53,233,255,.22);
     }
 
     .scroll {
-      margin-top: 34px;
-      color: rgba(255,255,255,.54);
-      font-size: .82rem;
-      letter-spacing: .18em;
+      margin-top: 36px;
+      color: rgba(255,255,255,.48);
+      font-size: .78rem;
+      letter-spacing: .20em;
       text-transform: uppercase;
     }
 
+    .divider {
+      width: min(720px, 78%);
+      height: 1px;
+      margin: 0 auto;
+      background: linear-gradient(90deg, transparent, rgba(53,233,255,.35), rgba(255,56,245,.34), transparent);
+    }
+
     section {
-      padding: 92px 0;
+      padding: 104px 0;
       position: relative;
     }
 
     .section-title {
       text-align: center;
-      margin: 0 auto 18px;
-      font-size: clamp(2rem, 5vw, 4.2rem);
+      margin: 0 auto 20px;
+      font-size: clamp(2.05rem, 5vw, 4.35rem);
       line-height: 1;
-      letter-spacing: -.055em;
+      letter-spacing: -.06em;
       text-transform: uppercase;
     }
 
     .section-copy {
-      max-width: 760px;
+      max-width: 730px;
       margin: 0 auto;
       text-align: center;
       color: var(--soft);
-      line-height: 1.75;
-      font-size: 1.08rem;
+      line-height: 1.74;
+      font-size: 1.07rem;
     }
 
     .manifesto {
-      border-top: 1px solid rgba(255,255,255,.09);
-      border-bottom: 1px solid rgba(255,255,255,.09);
-      background: linear-gradient(180deg, rgba(5,3,14,.32), rgba(5,3,14,.74));
+      border-top: 1px solid rgba(255,255,255,.07);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      background: linear-gradient(180deg, rgba(5,3,14,.26), rgba(5,3,14,.70));
     }
 
     .manifesto-grid {
-      margin-top: 42px;
+      margin-top: 46px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      gap: 18px;
     }
 
     .choice-card, .pillar-card {
-      border: 1px solid rgba(255,255,255,.13);
-      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.040);
       border-radius: 26px;
-      padding: 26px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.07);
+      padding: 28px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.065);
       backdrop-filter: blur(14px);
+      transition: transform .22s ease, border-color .22s ease, background .22s ease;
+    }
+
+    .choice-card:hover, .pillar-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(53,233,255,.34);
+      background: rgba(255,255,255,.055);
     }
 
     .choice-card h3, .pillar-card h3 {
-      margin: 0 0 12px;
-      font-size: 1.2rem;
+      margin: 0 0 14px;
+      font-size: 1.18rem;
     }
 
     .choice-card p, .pillar-card p {
@@ -326,45 +336,47 @@
     .pillars {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 14px;
-      margin-top: 42px;
+      gap: 16px;
+      margin-top: 46px;
     }
 
     .pillar-card {
-      padding: 22px;
-      min-height: 210px;
+      padding: 24px;
+      min-height: 218px;
     }
 
     .icon {
-      font-size: 1.65rem;
+      font-size: 1.58rem;
       margin-bottom: 18px;
     }
 
     .quote {
       text-align: center;
-      padding: 96px 0 116px;
+      padding: 112px 0 132px;
     }
 
     .quote blockquote {
       margin: 0 auto;
-      max-width: 920px;
-      font-size: clamp(2.2rem, 6vw, 5.2rem);
-      line-height: .98;
-      letter-spacing: -.065em;
+      max-width: 940px;
+      font-size: clamp(2.5rem, 6.6vw, 6rem);
+      line-height: .92;
+      letter-spacing: -.072em;
       font-weight: 950;
       text-transform: uppercase;
     }
 
     .quote span {
+      display: block;
       color: transparent;
-      -webkit-text-stroke: 1px rgba(255,255,255,.72);
+      -webkit-text-stroke: 1.05px rgba(255,255,255,.72);
+      margin-top: .1em;
     }
 
     footer {
-      padding: 32px 0 42px;
-      border-top: 1px solid rgba(255,255,255,.09);
-      color: rgba(255,255,255,.54);
-      font-size: .92rem;
+      padding: 34px 0 44px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: rgba(255,255,255,.52);
+      font-size: .9rem;
     }
 
     .footer-inner {
@@ -394,6 +406,8 @@
     }
 
     @media (max-width: 640px) {
+      .wrap { width: min(100% - 24px, 1180px); }
+
       .nav {
         top: 10px;
         width: calc(100% - 16px);
@@ -406,22 +420,25 @@
 
       .hero-card {
         border-radius: 28px;
-        padding: 30px 20px;
+        padding: 34px 20px;
       }
 
-      .kicker { letter-spacing: .22em; }
+      .logo { width: min(102px, 36vw); }
 
-      h1 { font-size: clamp(3.2rem, 16vw, 5.2rem); }
+      h1 { font-size: clamp(3.15rem, 16vw, 5.3rem); }
 
       .pillars-line {
         letter-spacing: .06em;
         line-height: 1.55;
       }
 
+      .hero-copy { max-width: 94%; }
+
       .buttons { flex-direction: column; }
       .btn { width: 100%; }
 
-      section { padding: 68px 0; }
+      section { padding: 74px 0; }
+
       .pillars { grid-template-columns: 1fr; }
       .pillar-card { min-height: auto; }
 
@@ -443,6 +460,7 @@
     <div class="navlinks">
       <a href="#manifesto">Manifesto</a>
       <a href="#pillars">Pillars</a>
+      <a href="#resources">Resources</a>
       <a class="join" href="https://www.sovereigncity.xyz/subscribe">Join</a>
     </div>
   </nav>
@@ -453,8 +471,6 @@
         <div class="hero-card">
           <div class="hero-inner">
             <img class="logo" src="assets/sovereign-city-logo.png" alt="Sovereign City logo">
-
-            <div class="kicker">The Sovereign Dispatch</div>
 
             <h1>
               Live by Design.
@@ -481,6 +497,8 @@
         </div>
       </div>
     </section>
+
+    <div class="divider"></div>
 
     <section class="manifesto" id="manifesto">
       <div class="wrap">
@@ -509,6 +527,8 @@
         </div>
       </div>
     </section>
+
+    <div class="divider"></div>
 
     <section id="pillars">
       <div class="wrap">
@@ -551,11 +571,13 @@
       </div>
     </section>
 
-    <section class="quote">
+    <div class="divider"></div>
+
+    <section class="quote" id="resources">
       <div class="wrap">
         <blockquote>
-          We don't tell people what to think.
-          <span>We help them think deliberately.</span>
+          Freedom isn't found.
+          <span>It's built.</span>
         </blockquote>
       </div>
     </section>
@@ -563,7 +585,7 @@
 
   <footer>
     <div class="wrap footer-inner">
-      <div>Sovereign City © 2026 • Freedom • Privacy • Prosperity</div>
+      <div>Sovereign City © 2026 • Live by Design. Not by Default.</div>
       <div class="footer-links">
         <a href="https://www.sovereigncity.xyz/subscribe">Newsletter</a>
         <a href="https://www.sovereigncity.xyz/p/welcome-to-sovereign-city">Manifesto</a>
