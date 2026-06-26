@@ -1,11 +1,13 @@
-# Sovereign City V2.1
+# Sovereign City V3.1
 
-Premium static homepage for Sovereign City.
+Cinematic static homepage for Sovereign City.
+
+Refinements:
+- Softer pillar line
+- Tighter hero paragraph
+- Slimmer navigation
+- More premium hero rhythm
 
 Core philosophy:
 
 Live by Design. Not by Default.
-
-Main CTAs:
-- Join the Dispatch → https://www.sovereigncity.xyz/subscribe
-- Read the Manifesto → https://www.sovereigncity.xyz/p/welcome-to-sovereign-city
