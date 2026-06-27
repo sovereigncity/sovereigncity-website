@@ -41,8 +41,8 @@
         radial-gradient(circle at 52% 6%, rgba(255,56,245,.16), transparent 28%),
         radial-gradient(circle at 82% 16%, rgba(53,233,255,.09), transparent 20%),
         url("assets/sovereign-city-bg.png") center/cover fixed no-repeat;
-      filter: saturate(1.05) brightness(.58);
-      transform: scale(1.02);
+      filter: saturate(.95) brightness(.28) blur(2px);
+      transform: scale(1.045);
     }
 
     body::after {
@@ -52,9 +52,9 @@
       z-index: -2;
       pointer-events: none;
       background:
-        radial-gradient(circle at center, transparent 0%, transparent 40%, rgba(0,0,0,.58) 100%),
-        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+        radial-gradient(ellipse at center, rgba(3,2,8,.58) 0%, rgba(3,2,8,.70) 38%, rgba(0,0,0,.86) 100%),
+        linear-gradient(rgba(255,255,255,.014) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.014) 1px, transparent 1px);
       background-size: auto, 64px 64px, 64px 64px;
       mask-image: linear-gradient(to bottom, transparent 0%, black 32%, black 78%, transparent 100%);
     }
@@ -175,6 +175,20 @@
       position: relative;
     }
 
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: min(980px, 90vw);
+      height: 72%;
+      left: 50%;
+      top: 53%;
+      transform: translate(-50%, -50%);
+      border-radius: 48px;
+      background: radial-gradient(ellipse at center, rgba(3,2,8,.70) 0%, rgba(3,2,8,.46) 48%, transparent 76%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
     .hero-shell {
       width: min(1060px, 100%);
       margin: 0 auto;
@@ -182,7 +196,7 @@
     }
 
     .hero-logo {
-      width: min(104px, 28vw);
+      width: min(92px, 26vw);
       aspect-ratio: 1 / 1;
       object-fit: contain;
       border-radius: 999px;
@@ -204,8 +218,9 @@
       letter-spacing: -.09em;
       text-transform: uppercase;
       text-shadow:
-        0 0 14px rgba(255,56,245,.16),
-        0 0 38px rgba(53,233,255,.08);
+        0 0 16px rgba(0,0,0,.62),
+        0 0 20px rgba(255,56,245,.13),
+        0 0 42px rgba(53,233,255,.08);
     }
 
     h1 span {
