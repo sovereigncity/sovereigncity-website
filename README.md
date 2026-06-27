@@ -1,13 +1,6 @@
-# Sovereign City V3.2
+# Sovereign City V4.0
 
-Cinematic static homepage for Sovereign City.
-
-Fixes:
-- Background image darkened and blurred so embedded text no longer clashes with the hero
-- Stronger central vignette for readability
-- Smaller floating logo
-- Preserves the full-screen cinematic hero
+Cinematic homepage inspired by the new Sovereign City art direction.
 
 Core philosophy:
-
 Live by Design. Not by Default.
