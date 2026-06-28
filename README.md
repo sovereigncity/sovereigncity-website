@@ -1,10 +1,12 @@
-# Sovereign City V6.0
+# Sovereign City V7 — Director's Cut
 
-Homepage built with clean cinematic background-only art.
+Premium polish release.
 
-Core philosophy:
-Live by Design. Not by Default.
-
-Notes:
-- Uses clean background image without baked-in text or UI.
-- Real HTML headline, CTAs and content.
+Highlights:
+- Smaller hero logo
+- Stronger headline spacing
+- Premium CTA buttons
+- Fade-up animation sequence
+- Subtle particles and background drift
+- Improved glass navigation
+- Added promise line: Build greater freedom through better decisions.
