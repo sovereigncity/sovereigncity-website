@@ -3,49 +3,701 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Sovereign City | Live by Design. Not by Default.</title>
   <meta name="description" content="Sovereign City explores the ideas, tools and technologies that help you build greater freedom, resilience and independence." />
+
   <style>
-    :root{--bg:#020108;--text:#f8f5ff;--soft:#d8cfea;--pink:#ff38f5;--violet:#8a3cff;--cyan:#35e9ff;--gold:#f8c76b}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}
-    body{margin:0;color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);overflow-x:hidden}
-    body:before{content:"";position:fixed;inset:0;z-index:-5;background:linear-gradient(180deg,rgba(2,1,8,.48) 0%,rgba(2,1,8,.82) 58%,rgba(2,1,8,.98) 100%),url("assets/sovereign-city-bg.png") center/cover fixed no-repeat;filter:brightness(.24) blur(4.5px) saturate(.86);transform:scale(1.09)}
-    body:after{content:"";position:fixed;inset:0;z-index:-4;pointer-events:none;background:radial-gradient(ellipse at 50% 36%,rgba(2,1,8,.18) 0%,rgba(2,1,8,.35) 42%,rgba(0,0,0,.92) 100%),radial-gradient(circle at 36% 18%,rgba(255,56,245,.13),transparent 25%),radial-gradient(circle at 72% 30%,rgba(53,233,255,.11),transparent 28%)}
-    .grid-floor{position:fixed;left:0;right:0;bottom:-12vh;height:46vh;z-index:-3;pointer-events:none;background:linear-gradient(rgba(255,56,245,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(53,233,255,.10) 1px,transparent 1px);background-size:82px 82px;transform:perspective(540px) rotateX(63deg) scale(1.7);transform-origin:bottom center;opacity:.28;mask-image:linear-gradient(to top,black,transparent 82%)}
-    .ambient{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden}.ambient span{position:absolute;width:500px;height:500px;border-radius:999px;filter:blur(110px);opacity:.14;animation:drift 18s ease-in-out infinite alternate}.ambient span:first-child{background:var(--pink);top:12%;left:8%}.ambient span:last-child{background:var(--cyan);right:8%;top:32%;animation-delay:2.5s}@keyframes drift{from{transform:translate3d(-18px,8px,0) scale(1)}to{transform:translate3d(26px,-22px,0) scale(1.08)}}
-    .wrap{width:min(1160px,calc(100% - 36px));margin:0 auto}
-    .nav{position:fixed;top:22px;left:50%;transform:translateX(-50%);width:min(1060px,calc(100% - 34px));z-index:50;display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border:1px solid rgba(255,255,255,.13);border-radius:999px;background:rgba(4,3,12,.68);backdrop-filter:blur(24px);box-shadow:0 18px 80px rgba(0,0,0,.34)}
-    .brand{display:flex;align-items:center;gap:11px;color:white;text-decoration:none;text-transform:uppercase;letter-spacing:.10em;font-weight:900;font-size:.78rem}.brand img{width:36px;height:36px;border-radius:999px;object-fit:cover;filter:drop-shadow(0 0 11px rgba(255,56,245,.34))}
-    .navlinks{display:flex;align-items:center;gap:10px}.navlinks a{color:rgba(248,245,255,.74);text-decoration:none;font-weight:760;font-size:.86rem;padding:9px 13px;border-radius:999px;transition:.22s ease}.navlinks a:hover{color:white;background:rgba(255,255,255,.08)}.navlinks .join{color:white;padding:12px 22px;background:linear-gradient(135deg,var(--pink),var(--violet));box-shadow:0 0 32px rgba(255,56,245,.38)}
-    .hero{position:relative;min-height:100vh;display:grid;place-items:center;padding:128px 0 92px;text-align:center;overflow:hidden}.hero-inner{width:min(1120px,100%);margin:0 auto;position:relative;z-index:2}.hero-logo{width:min(122px,31vw);aspect-ratio:1;object-fit:contain;border-radius:999px;margin:0 auto 42px;display:block;filter:drop-shadow(0 0 24px rgba(255,56,245,.40));animation:breathe 6s ease-in-out infinite}@keyframes breathe{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-4px) scale(1.018)}}
-    h1{margin:0;font-size:clamp(4.3rem,10.4vw,10.4rem);line-height:.82;letter-spacing:-.092em;text-transform:uppercase;text-shadow:0 0 18px rgba(0,0,0,.72),0 0 28px rgba(255,56,245,.14)}h1 span{display:block;margin-top:.08em;color:transparent;-webkit-text-stroke:1.14px rgba(255,255,255,.80);text-shadow:none}
-    .pillars-line{margin:34px auto 0;color:var(--gold);font-size:clamp(.78rem,1.55vw,.95rem);font-weight:850;letter-spacing:.12em;text-transform:uppercase;text-shadow:0 0 18px rgba(0,0,0,.72)}
-    .hero-copy{max-width:680px;margin:34px auto 0;color:var(--soft);line-height:1.72;font-size:clamp(1.02rem,2vw,1.16rem);text-shadow:0 0 20px rgba(0,0,0,.80)}.hero-copy strong{color:white;font-weight:920}
-    .buttons{margin-top:42px;display:flex;justify-content:center;flex-wrap:wrap;gap:18px}.btn{min-height:62px;min-width:250px;display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:0 34px;border-radius:16px;color:white;text-decoration:none;font-weight:900;border:1px solid rgba(255,255,255,.22);transition:.22s ease;backdrop-filter:blur(14px)}.btn:after{content:"→";transition:transform .22s ease}.btn:hover:after{transform:translateX(4px)}.btn-primary{background:linear-gradient(135deg,#ff45f6 0%,#8a3cff 78%);box-shadow:0 0 42px rgba(255,56,245,.38)}.btn-secondary{background:rgba(4,3,12,.42);box-shadow:inset 0 1px 0 rgba(255,255,255,.10)}.btn:hover{transform:translateY(-3px);border-color:rgba(53,233,255,.58);box-shadow:0 0 48px rgba(53,233,255,.22)}
-    .microcopy{margin-top:21px;color:rgba(248,245,255,.58);font-size:.92rem;text-shadow:0 0 18px rgba(0,0,0,.80)}
-    .scroll-label{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);color:rgba(255,255,255,.62);text-transform:uppercase;letter-spacing:.35em;font-size:.67rem;text-decoration:none;display:grid;justify-items:center;gap:13px;z-index:3}.scroll-label span{width:1px;height:54px;background:linear-gradient(transparent,rgba(255,255,255,.62),transparent);position:relative}.scroll-label span:after{content:"";position:absolute;left:50%;bottom:5px;width:7px;height:7px;border-radius:999px;background:white;box-shadow:0 0 18px rgba(255,255,255,.86);transform:translateX(-50%);animation:pulseDot 1.6s ease-in-out infinite}@keyframes pulseDot{0%,100%{opacity:.35;transform:translateX(-50%) scale(.8)}50%{opacity:1;transform:translateX(-50%) scale(1.1)}}
-    .below{background:linear-gradient(180deg,#020108 0%,#05020d 100%)}.divider{width:min(740px,74%);height:1px;margin:0 auto;background:linear-gradient(90deg,transparent,rgba(53,233,255,.28),rgba(255,56,245,.28),transparent)}
-    section.content{position:relative;padding:112px 0}.section-title{margin:0 auto 20px;text-align:center;font-size:clamp(2.25rem,5.4vw,4.9rem);line-height:.95;letter-spacing:-.065em;text-transform:uppercase}.section-copy{max-width:730px;margin:0 auto;color:var(--soft);font-size:1.08rem;line-height:1.74;text-align:center}
-    .manifesto-grid{margin-top:50px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{border:1px solid rgba(255,255,255,.12);border-radius:30px;background:rgba(10,6,22,.64);backdrop-filter:blur(18px);padding:33px;box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 20px 70px rgba(0,0,0,.20);transition:.24s ease}.card:hover{transform:translateY(-4px);border-color:rgba(53,233,255,.34);background:rgba(14,9,30,.72)}.card h3{margin:0 0 14px;font-size:1.22rem}.card p{margin:0;color:var(--soft);line-height:1.68}
-    .pillars{margin-top:50px;display:grid;grid-template-columns:repeat(5,1fr);gap:16px}.pillar{min-height:225px}.icon{font-size:1.52rem;margin-bottom:20px}.quote{text-align:center;padding:126px 0 142px}.quote blockquote{margin:0 auto;max-width:980px;font-size:clamp(2.8rem,7.2vw,6.9rem);line-height:.88;letter-spacing:-.082em;font-weight:950;text-transform:uppercase}.quote span{display:block;margin-top:.1em;color:transparent;-webkit-text-stroke:1.05px rgba(255,255,255,.72)}
-    footer{border-top:1px solid rgba(255,255,255,.08);padding:34px 0 44px;color:rgba(255,255,255,.52);font-size:.9rem;background:#05020d}.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}.footer-links{display:flex;gap:16px;flex-wrap:wrap}.footer-links a{color:rgba(255,255,255,.66);text-decoration:none}.footer-links a:hover{color:white}
-    @media(max-width:980px){.manifesto-grid{grid-template-columns:1fr}.pillars{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:640px){.wrap{width:min(100% - 24px,1160px)}.nav{top:10px;width:calc(100% - 16px)}.brand span{display:none}.navlinks a:not(.join){display:none}.hero{padding:104px 0 84px}.hero-logo{width:102px;margin-bottom:32px}h1{font-size:clamp(3.15rem,16vw,5.45rem);letter-spacing:-.076em}.pillars-line{letter-spacing:.065em;line-height:1.55}.hero-copy{max-width:94%}.buttons{flex-direction:column}.btn{width:100%;min-width:0}.scroll-label{display:none}section.content{padding:76px 0}.pillars{grid-template-columns:1fr}.pillar{min-height:auto}.footer-inner{flex-direction:column;text-align:center}}
+    :root {
+      --bg: #020108;
+      --text: #f8f5ff;
+      --soft: #d8cfea;
+      --muted: #a297b6;
+      --pink: #ff38f5;
+      --violet: #8a3cff;
+      --cyan: #35e9ff;
+      --gold: #f8c76b;
+      --line: rgba(255,255,255,.15);
+      --glass: rgba(5,4,14,.58);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      overflow-x: hidden;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 128px 0 96px;
+      text-align: center;
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -5;
+      background:
+        linear-gradient(180deg, rgba(2,1,8,.18) 0%, rgba(2,1,8,.34) 46%, rgba(2,1,8,.90) 100%),
+        url("assets/sovereign-city-hero-bg.png") center/cover no-repeat;
+      filter: brightness(.62) saturate(1.08);
+      transform: scale(1.012);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -4;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 50% 42%, rgba(2,1,8,.08) 0%, rgba(2,1,8,.20) 43%, rgba(0,0,0,.78) 100%),
+        linear-gradient(180deg, rgba(0,0,0,.28) 0%, transparent 22%, rgba(0,0,0,.62) 100%);
+    }
+
+    .hero-scrim {
+      position: absolute;
+      width: min(980px, 88vw);
+      height: 54%;
+      left: 50%;
+      top: 51%;
+      transform: translate(-50%, -50%);
+      border-radius: 999px;
+      z-index: -2;
+      pointer-events: none;
+      background: radial-gradient(ellipse at center, rgba(2,1,8,.62) 0%, rgba(2,1,8,.38) 44%, transparent 74%);
+      filter: blur(4px);
+    }
+
+    .ambient {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .ambient span {
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 999px;
+      filter: blur(115px);
+      opacity: .13;
+      animation: drift 18s ease-in-out infinite alternate;
+    }
+
+    .ambient span:first-child {
+      background: var(--pink);
+      top: 10%;
+      left: 7%;
+    }
+
+    .ambient span:last-child {
+      background: var(--cyan);
+      right: 7%;
+      top: 34%;
+      animation-delay: 2.5s;
+    }
+
+    @keyframes drift {
+      from { transform: translate3d(-18px, 8px, 0) scale(1); }
+      to { transform: translate3d(26px, -22px, 0) scale(1.08); }
+    }
+
+    .wrap {
+      width: min(1160px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: fixed;
+      top: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1060px, calc(100% - 34px));
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 999px;
+      background: rgba(4,3,12,.58);
+      backdrop-filter: blur(24px);
+      box-shadow: 0 18px 80px rgba(0,0,0,.30);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      color: white;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: .10em;
+      font-weight: 900;
+      font-size: .78rem;
+    }
+
+    .brand img {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      object-fit: cover;
+      filter: drop-shadow(0 0 12px rgba(255,56,245,.38));
+    }
+
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .navlinks a {
+      color: rgba(248,245,255,.76);
+      text-decoration: none;
+      font-weight: 760;
+      font-size: .86rem;
+      padding: 9px 13px;
+      border-radius: 999px;
+      transition: .22s ease;
+    }
+
+    .navlinks a:hover {
+      color: white;
+      background: rgba(255,255,255,.08);
+    }
+
+    .navlinks .join {
+      color: white;
+      padding: 12px 22px;
+      background: linear-gradient(135deg, var(--pink), var(--violet));
+      box-shadow: 0 0 34px rgba(255,56,245,.44);
+    }
+
+    .hero-inner {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      position: relative;
+      z-index: 3;
+    }
+
+    .hero-logo {
+      width: min(128px, 31vw);
+      aspect-ratio: 1;
+      object-fit: contain;
+      border-radius: 999px;
+      margin: 0 auto 42px;
+      display: block;
+      filter: drop-shadow(0 0 28px rgba(255,56,245,.48));
+      animation: breathe 6s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+      0%,100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-4px) scale(1.018); }
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(4.25rem, 10.3vw, 10.35rem);
+      line-height: .82;
+      letter-spacing: -.092em;
+      text-transform: uppercase;
+      text-shadow:
+        0 0 18px rgba(0,0,0,.78),
+        0 0 34px rgba(255,56,245,.20);
+    }
+
+    h1 span {
+      display: block;
+      margin-top: .08em;
+      color: transparent;
+      -webkit-text-stroke: 1.14px rgba(255,255,255,.83);
+      text-shadow: none;
+    }
+
+    .pillars-line {
+      margin: 34px auto 0;
+      color: var(--gold);
+      font-size: clamp(.78rem, 1.55vw, .95rem);
+      font-weight: 850;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      text-shadow: 0 0 20px rgba(0,0,0,.85);
+    }
+
+    .hero-copy {
+      max-width: 690px;
+      margin: 32px auto 0;
+      color: var(--soft);
+      line-height: 1.72;
+      font-size: clamp(1.02rem, 2vw, 1.16rem);
+      text-shadow: 0 0 22px rgba(0,0,0,.88);
+    }
+
+    .hero-copy strong {
+      color: white;
+      font-weight: 920;
+    }
+
+    .buttons {
+      margin-top: 42px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .btn {
+      min-height: 62px;
+      min-width: 250px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 0 34px;
+      border-radius: 16px;
+      color: white;
+      text-decoration: none;
+      font-weight: 900;
+      border: 1px solid rgba(255,255,255,.24);
+      transition: .22s ease;
+      backdrop-filter: blur(14px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::after {
+      content: "→";
+      transition: transform .22s ease;
+    }
+
+    .btn:hover::after { transform: translateX(4px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #ff45f6 0%, #8a3cff 78%);
+      box-shadow: 0 0 44px rgba(255,56,245,.42);
+    }
+
+    .btn-secondary {
+      background: rgba(4,3,12,.42);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.12);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      border-color: rgba(53,233,255,.62);
+      box-shadow: 0 0 50px rgba(53,233,255,.24);
+    }
+
+    .microcopy {
+      margin-top: 21px;
+      color: rgba(248,245,255,.62);
+      font-size: .92rem;
+      text-shadow: 0 0 18px rgba(0,0,0,.86);
+    }
+
+    .scroll-label {
+      position: absolute;
+      left: 50%;
+      bottom: 26px;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,.66);
+      text-transform: uppercase;
+      letter-spacing: .35em;
+      font-size: .67rem;
+      text-decoration: none;
+      display: grid;
+      justify-items: center;
+      gap: 13px;
+      z-index: 3;
+    }
+
+    .scroll-label span {
+      width: 1px;
+      height: 54px;
+      background: linear-gradient(transparent, rgba(255,255,255,.68), transparent);
+      position: relative;
+    }
+
+    .scroll-label span::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 5px;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: white;
+      box-shadow: 0 0 18px rgba(255,255,255,.90);
+      transform: translateX(-50%);
+      animation: pulseDot 1.6s ease-in-out infinite;
+    }
+
+    @keyframes pulseDot {
+      0%,100% { opacity: .35; transform: translateX(-50%) scale(.8); }
+      50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+    }
+
+    .below {
+      background: linear-gradient(180deg, #020108 0%, #05020d 100%);
+    }
+
+    .divider {
+      width: min(740px, 74%);
+      height: 1px;
+      margin: 0 auto;
+      background: linear-gradient(90deg, transparent, rgba(53,233,255,.28), rgba(255,56,245,.28), transparent);
+    }
+
+    section.content {
+      position: relative;
+      padding: 112px 0;
+    }
+
+    .section-title {
+      margin: 0 auto 20px;
+      text-align: center;
+      font-size: clamp(2.25rem, 5.4vw, 4.9rem);
+      line-height: .95;
+      letter-spacing: -.065em;
+      text-transform: uppercase;
+    }
+
+    .section-copy {
+      max-width: 730px;
+      margin: 0 auto;
+      color: var(--soft);
+      font-size: 1.08rem;
+      line-height: 1.74;
+      text-align: center;
+    }
+
+    .manifesto-grid {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 30px;
+      background: rgba(10, 6, 22, .64);
+      backdrop-filter: blur(18px);
+      padding: 33px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 20px 70px rgba(0,0,0,.20);
+      transition: .24s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(53,233,255,.34);
+      background: rgba(14, 9, 30, .72);
+    }
+
+    .card h3 {
+      margin: 0 0 14px;
+      font-size: 1.22rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--soft);
+      line-height: 1.68;
+    }
+
+    .pillars {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    .pillar {
+      min-height: 225px;
+    }
+
+    .icon {
+      font-size: 1.52rem;
+      margin-bottom: 20px;
+    }
+
+    .quote {
+      text-align: center;
+      padding: 126px 0 142px;
+    }
+
+    .quote blockquote {
+      margin: 0 auto;
+      max-width: 980px;
+      font-size: clamp(2.8rem, 7.2vw, 6.9rem);
+      line-height: .88;
+      letter-spacing: -.082em;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    .quote span {
+      display: block;
+      margin-top: .1em;
+      color: transparent;
+      -webkit-text-stroke: 1.05px rgba(255,255,255,.72);
+    }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding: 34px 0 44px;
+      color: rgba(255,255,255,.52);
+      font-size: .9rem;
+      background: #05020d;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,.66);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover { color: white; }
+
+    @media (max-width: 980px) {
+      .manifesto-grid { grid-template-columns: 1fr; }
+      .pillars { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .wrap { width: min(100% - 24px, 1160px); }
+
+      .nav {
+        top: 10px;
+        width: calc(100% - 16px);
+      }
+
+      .brand span { display: none; }
+      .navlinks a:not(.join) { display: none; }
+
+      .hero { padding: 104px 0 84px; }
+
+      .hero-logo {
+        width: 104px;
+        margin-bottom: 32px;
+      }
+
+      h1 {
+        font-size: clamp(3.15rem, 16vw, 5.45rem);
+        letter-spacing: -.076em;
+      }
+
+      .pillars-line {
+        letter-spacing: .065em;
+        line-height: 1.55;
+      }
+
+      .hero-copy { max-width: 94%; }
+
+      .buttons { flex-direction: column; }
+
+      .btn {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .scroll-label { display: none; }
+
+      section.content { padding: 76px 0; }
+
+      .pillars { grid-template-columns: 1fr; }
+      .pillar { min-height: auto; }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <div class="grid-floor"></div><div class="ambient"><span></span><span></span></div>
-  <nav class="nav"><a class="brand" href="#"><img src="assets/sovereign-city-logo.png" alt="Sovereign City"><span>Sovereign City</span></a><div class="navlinks"><a href="#manifesto">Manifesto</a><a href="#pillars">Pillars</a><a href="#resources">Resources</a><a class="join" href="https://www.sovereigncity.xyz/subscribe">Join</a></div></nav>
+  <div class="ambient"><span></span><span></span></div>
+
+  <nav class="nav">
+    <a class="brand" href="#">
+      <img src="assets/sovereign-city-logo.png" alt="Sovereign City">
+      <span>Sovereign City</span>
+    </a>
+
+    <div class="navlinks">
+      <a href="#manifesto">Manifesto</a>
+      <a href="#pillars">Pillars</a>
+      <a href="#resources">Resources</a>
+      <a class="join" href="https://www.sovereigncity.xyz/subscribe">Join</a>
+    </div>
+  </nav>
+
   <main>
-    <section class="hero"><div class="wrap"><div class="hero-inner"><img class="hero-logo" src="assets/sovereign-city-logo.png" alt="Sovereign City logo"><h1>Live by Design.<span>Not by Default.</span></h1><div class="pillars-line">Privacy · Financial Sovereignty · Digital Independence</div><p class="hero-copy"><strong>In today's world, freedom isn't something you're given.</strong> It's something you build—one deliberate decision at a time. Sovereign City explores the ideas, tools and technologies that help you build greater freedom, resilience and independence.</p><div class="buttons"><a class="btn btn-primary" href="https://www.sovereigncity.xyz/subscribe">Join the Dispatch</a><a class="btn btn-secondary" href="https://www.sovereigncity.xyz/p/welcome-to-sovereign-city">Read the Manifesto</a></div><div class="microcopy">One thoughtful email each week. Practical ideas for living by design.</div></div></div><a class="scroll-label" href="#manifesto" aria-label="Scroll to manifesto">Scroll<span></span></a></section>
-    <div class="below"><div class="divider"></div>
-      <section class="content" id="manifesto"><div class="wrap"><h2 class="section-title">Every freedom begins with a choice.</h2><p class="section-copy">Sovereign City is built for people who want to think more deliberately, reduce unnecessary dependence, and make better decisions about their money, data, technology, location and future.</p><div class="manifesto-grid"><div class="card"><h3>Not fear. Preparation.</h3><p>We don't believe in panic. We believe in practical steps that make you more capable, private and resilient.</p></div><div class="card"><h3>Not ideology. Agency.</h3><p>We don't tell people what to think. We explore tools and ideas that help people think and choose more deliberately.</p></div><div class="card"><h3>Not escape. Design.</h3><p>Sovereignty isn't about disappearing from the world. It's about building more freedom and optionality within it.</p></div></div></div></section>
+    <section class="hero">
+      <div class="hero-scrim"></div>
+
+      <div class="wrap">
+        <div class="hero-inner">
+          <img class="hero-logo" src="assets/sovereign-city-logo.png" alt="Sovereign City logo">
+
+          <h1>
+            Live by Design.
+            <span>Not by Default.</span>
+          </h1>
+
+          <div class="pillars-line">
+            Privacy · Financial Sovereignty · Digital Independence
+          </div>
+
+          <p class="hero-copy">
+            <strong>In today's world, freedom isn't something you're given.</strong>
+            It's something you build—one deliberate decision at a time.
+            Sovereign City explores the ideas, tools and technologies that help you build greater freedom, resilience and independence.
+          </p>
+
+          <div class="buttons">
+            <a class="btn btn-primary" href="https://www.sovereigncity.xyz/subscribe">Join the Dispatch</a>
+            <a class="btn btn-secondary" href="https://www.sovereigncity.xyz/p/welcome-to-sovereign-city">Read the Manifesto</a>
+          </div>
+
+          <div class="microcopy">
+            One thoughtful email each week. Practical ideas for living by design.
+          </div>
+        </div>
+      </div>
+
+      <a class="scroll-label" href="#manifesto" aria-label="Scroll to manifesto">
+        Scroll
+        <span></span>
+      </a>
+    </section>
+
+    <div class="below">
       <div class="divider"></div>
-      <section class="content" id="pillars"><div class="wrap"><h2 class="section-title">The Five Pillars</h2><p class="section-copy">Sovereign City explores the foundations of a more independent, intentional and resilient life.</p><div class="pillars"><div class="card pillar"><div class="icon">🔒</div><h3>Privacy</h3><p>Protect your data, communications, identity and attention.</p></div><div class="card pillar"><div class="icon">💰</div><h3>Financial Sovereignty</h3><p>Own your assets, build optionality and reduce unnecessary dependence.</p></div><div class="card pillar"><div class="icon">🌍</div><h3>Geographic Freedom</h3><p>Think intentionally about where you live, work and build your future.</p></div><div class="card pillar"><div class="icon">🤖</div><h3>Digital Independence</h3><p>Use technology deliberately instead of letting defaults shape your life.</p></div><div class="card pillar"><div class="icon">🧠</div><h3>Personal Resilience</h3><p>Develop the mindset, habits and knowledge to thrive in uncertainty.</p></div></div></div></section>
+
+      <section class="content" id="manifesto">
+        <div class="wrap">
+          <h2 class="section-title">Every freedom begins with a choice.</h2>
+          <p class="section-copy">
+            Sovereign City is built for people who want to think more deliberately,
+            reduce unnecessary dependence, and make better decisions about their money,
+            data, technology, location and future.
+          </p>
+
+          <div class="manifesto-grid">
+            <div class="card">
+              <h3>Not fear. Preparation.</h3>
+              <p>We don't believe in panic. We believe in practical steps that make you more capable, private and resilient.</p>
+            </div>
+
+            <div class="card">
+              <h3>Not ideology. Agency.</h3>
+              <p>We don't tell people what to think. We explore tools and ideas that help people think and choose more deliberately.</p>
+            </div>
+
+            <div class="card">
+              <h3>Not escape. Design.</h3>
+              <p>Sovereignty isn't about disappearing from the world. It's about building more freedom and optionality within it.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <div class="divider"></div>
-      <section class="quote content" id="resources"><div class="wrap"><blockquote>Freedom isn't found.<span>It's built.</span></blockquote></div></section>
+
+      <section class="content" id="pillars">
+        <div class="wrap">
+          <h2 class="section-title">The Five Pillars</h2>
+          <p class="section-copy">
+            Sovereign City explores the foundations of a more independent, intentional and resilient life.
+          </p>
+
+          <div class="pillars">
+            <div class="card pillar">
+              <div class="icon">🔒</div>
+              <h3>Privacy</h3>
+              <p>Protect your data, communications, identity and attention.</p>
+            </div>
+
+            <div class="card pillar">
+              <div class="icon">💰</div>
+              <h3>Financial Sovereignty</h3>
+              <p>Own your assets, build optionality and reduce unnecessary dependence.</p>
+            </div>
+
+            <div class="card pillar">
+              <div class="icon">🌍</div>
+              <h3>Geographic Freedom</h3>
+              <p>Think intentionally about where you live, work and build your future.</p>
+            </div>
+
+            <div class="card pillar">
+              <div class="icon">🤖</div>
+              <h3>Digital Independence</h3>
+              <p>Use technology deliberately instead of letting defaults shape your life.</p>
+            </div>
+
+            <div class="card pillar">
+              <div class="icon">🧠</div>
+              <h3>Personal Resilience</h3>
+              <p>Develop the mindset, habits and knowledge to thrive in uncertainty.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <section class="quote content" id="resources">
+        <div class="wrap">
+          <blockquote>
+            Freedom isn't found.
+            <span>It's built.</span>
+          </blockquote>
+        </div>
+      </section>
     </div>
   </main>
-  <footer><div class="wrap footer-inner"><div>Sovereign City © 2026 • Live by Design. Not by Default.</div><div class="footer-links"><a href="https://www.sovereigncity.xyz/subscribe">Newsletter</a><a href="https://www.sovereigncity.xyz/p/welcome-to-sovereign-city">Manifesto</a><a href="#">X</a></div></div></footer>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div>Sovereign City © 2026 • Live by Design. Not by Default.</div>
+      <div class="footer-links">
+        <a href="https://www.sovereigncity.xyz/subscribe">Newsletter</a>
+        <a href="https://www.sovereigncity.xyz/p/welcome-to-sovereign-city">Manifesto</a>
+        <a href="#">X</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
