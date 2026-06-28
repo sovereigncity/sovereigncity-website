@@ -252,19 +252,7 @@
       -webkit-text-stroke: 1.14px rgba(255,255,255,.83);
       text-shadow: none;
     }
-
-    .promise {
-      margin: 28px auto 0;
-      color: rgba(255,255,255,.86);
-      font-size: clamp(.94rem, 1.6vw, 1.05rem);
-      font-weight: 800;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      text-shadow: 0 0 20px rgba(0,0,0,.90);
-      animation: fadeUp .82s .37s ease both;
-    }
-
-    .pillars-line {
+.pillars-line {
       margin: 20px auto 0;
       color: var(--gold);
       font-size: clamp(.78rem, 1.55vw, .95rem);
@@ -277,7 +265,7 @@
 
     .hero-copy {
       max-width: 660px;
-      margin: 28px auto 0;
+      margin: 40px auto 0;
       color: var(--soft);
       line-height: 1.70;
       font-size: clamp(1.02rem, 2vw, 1.15rem);
@@ -348,51 +336,7 @@
       text-shadow: 0 0 18px rgba(0,0,0,.86);
       animation: fadeUp .82s .86s ease both;
     }
-
-    .scroll-label {
-      position: absolute;
-      left: 50%;
-      bottom: 24px;
-      transform: translateX(-50%);
-      color: rgba(255,255,255,.66);
-      text-transform: uppercase;
-      letter-spacing: .35em;
-      font-size: .67rem;
-      text-decoration: none;
-      display: grid;
-      justify-items: center;
-      gap: 13px;
-      z-index: 3;
-      animation: fadeUp .82s 1s ease both;
-    }
-
-    .scroll-label span {
-      width: 1px;
-      height: 54px;
-      background: linear-gradient(transparent, rgba(255,255,255,.68), transparent);
-      position: relative;
-    }
-
-    .scroll-label span::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: 5px;
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: white;
-      box-shadow: 0 0 18px rgba(255,255,255,.90);
-      transform: translateX(-50%);
-      animation: pulseDot 1.6s ease-in-out infinite;
-    }
-
-    @keyframes pulseDot {
-      0%,100% { opacity: .35; transform: translateX(-50%) scale(.8); }
-      50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
-    }
-
-    @keyframes fadeUp {
+@keyframes fadeUp {
       from { opacity: 0; transform: translateY(18px); }
       to { opacity: 1; transform: translateY(0); }
     }
@@ -583,13 +527,7 @@
       h1 span {
         margin-top: .10em;
       }
-
-      .promise {
-        letter-spacing: .035em;
-        line-height: 1.4;
-      }
-
-      .pillars-line {
+.pillars-line {
         letter-spacing: .06em;
         line-height: 1.55;
       }
@@ -603,10 +541,7 @@
         min-width: 0;
         min-height: 60px;
       }
-
-      .scroll-label { display: none; }
-
-      section.content { padding: 76px 0; }
+section.content { padding: 76px 0; }
 
       .pillars { grid-template-columns: 1fr; }
       .pillar { min-height: auto; }
@@ -650,11 +585,7 @@
             <span>Not by Default.</span>
           </h1>
 
-          <div class="promise">
-            Build greater freedom through better decisions.
-          </div>
-
-          <div class="pillars-line">
+<div class="pillars-line">
             Privacy · Financial Sovereignty · Digital Independence
           </div>
 
@@ -674,12 +605,7 @@
           </div>
         </div>
       </div>
-
-      <a class="scroll-label" href="#manifesto" aria-label="Scroll to manifesto">
-        Scroll
-        <span></span>
-      </a>
-    </section>
+</section>
 
     <div class="below">
       <div class="divider"></div>

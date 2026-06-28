@@ -1,12 +1,7 @@
-# Sovereign City V7 — Director's Cut
+# Sovereign City V7.1 Cleanup
 
-Premium polish release.
-
-Highlights:
-- Smaller hero logo
-- Stronger headline spacing
-- Premium CTA buttons
-- Fade-up animation sequence
-- Subtle particles and background drift
-- Improved glass navigation
-- Added promise line: Build greater freedom through better decisions.
+Small cleanup release:
+- Removed promise line below headline
+- Removed scroll indicator
+- Added more breathing room above hero paragraph
+- Preserved V7 Director's Cut styling
