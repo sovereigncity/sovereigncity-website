@@ -1,7 +1,12 @@
-# Sovereign City V7.1 Cleanup
+# Sovereign City Website + Manifesto v1
 
-Small cleanup release:
-- Removed promise line below headline
-- Removed scroll indicator
-- Added more breathing room above hero paragraph
-- Preserved V7 Director's Cut styling
+Includes:
+- Updated homepage with local Manifesto links
+- New manifesto.html page
+- Assets folder
+
+Upload/replace these files in GitHub:
+- index.html
+- manifesto.html
+- README.md
+- assets/
