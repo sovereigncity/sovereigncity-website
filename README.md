@@ -1,12 +1,3 @@
-# Sovereign City Website + Manifesto v1
+# Sovereign City + Sovereign Vault v1
 
-Includes:
-- Updated homepage with local Manifesto links
-- New manifesto.html page
-- Assets folder
-
-Upload/replace these files in GitHub:
-- index.html
-- manifesto.html
-- README.md
-- assets/
+Upload/replace index.html, manifesto.html, vault.html, README.md and assets/.
