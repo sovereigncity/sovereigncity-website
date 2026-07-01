@@ -1,10 +1,11 @@
-# Sovereign City Dispatch Page v2
+# Sovereign City Dispatch Page v3
 
 Updates:
-- Navigation CTA: Get the Dispatch
-- Landing headline: Become a Founding Sovereign Builder
-- Added reassurance: free forever, no data selling, no spam, unsubscribe anytime
-- Form button remains: Begin Building
+- Solid white 0 / 500 counter
+- Founding Members label
+- Builder #000 / Waiting for you
+- Founding cohort recognition line
+- Premium two-column landing page layout
 
 Upload/replace:
 - index.html
