@@ -1,6 +1,10 @@
-# Sovereign City Signup Page v1
+# Sovereign City Dispatch Page v2
 
-Includes builders.html Founding Sovereign Builders signup page.
+Updates:
+- Navigation CTA: Get the Dispatch
+- Landing headline: Become a Founding Sovereign Builder
+- Added reassurance: free forever, no data selling, no spam, unsubscribe anytime
+- Form button remains: Begin Building
 
 Upload/replace:
 - index.html
@@ -9,5 +13,3 @@ Upload/replace:
 - builders.html
 - README.md
 - assets/
-
-Next step: connect the visual signup form to Beehiiv embed/API.
