@@ -1,14 +1,9 @@
-# Sovereign City Dispatch Page v5
+# Sovereign City Dispatch Page v6 Signature Fix
 
 Updates:
-- Premium scroll-aware navbar:
-  - shrinks after scrolling
-  - becomes more subtle
-  - CTA becomes outlined/subtle
-  - hides slightly while scrolling down
-  - returns when scrolling up or hovered
-- Replaced remaining Monty references with Millionz
-- Signature/sign-off now uses Millionz • Founder, Sovereign City
+- Replaces font-based "Millionz" text with actual purple Millionz signature PNG
+- Keeps sign-off as Founder • Sovereign City
+- Keeps v5 scroll-aware navbar behavior
 
 Upload/replace:
 - index.html
