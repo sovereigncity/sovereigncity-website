@@ -1,11 +1,12 @@
-# Sovereign City Dispatch Page v3
+# Sovereign City Dispatch Page v4
 
 Updates:
-- Solid white 0 / 500 counter
-- Founding Members label
-- Builder #000 / Waiting for you
-- Founding cohort recognition line
-- Premium two-column landing page layout
+- Uses "Founding Members" for clarity
+- Main form CTA says "Get the Dispatch"
+- Hero height tightened
+- Signup card and purple button made more prominent
+- Removed unnecessary lower CTA button
+- Mobile responsive layout included
 
 Upload/replace:
 - index.html
