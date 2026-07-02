@@ -1,12 +1,14 @@
-# Sovereign City Dispatch Page v4
+# Sovereign City Dispatch Page v5
 
 Updates:
-- Uses "Founding Members" for clarity
-- Main form CTA says "Get the Dispatch"
-- Hero height tightened
-- Signup card and purple button made more prominent
-- Removed unnecessary lower CTA button
-- Mobile responsive layout included
+- Premium scroll-aware navbar:
+  - shrinks after scrolling
+  - becomes more subtle
+  - CTA becomes outlined/subtle
+  - hides slightly while scrolling down
+  - returns when scrolling up or hovered
+- Replaced remaining Monty references with Millionz
+- Signature/sign-off now uses Millionz • Founder, Sovereign City
 
 Upload/replace:
 - index.html
