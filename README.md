@@ -1,17 +1,14 @@
-# Sovereign City Dispatch Page v5 Safe Millionz
+# Sovereign City Dispatch Page v5
 
-Safe rollback from the broken signature version.
-
-Keeps:
-- Stable v5 layout
-- Scroll-aware navbar
-- Get the Dispatch CTA
-- Founding Members wording
-
-Fixes:
-- Removes broken signature image injection
-- Uses Millionz as founder identity
-- Sign-off: Founder • Sovereign City
+Updates:
+- Premium scroll-aware navbar:
+  - shrinks after scrolling
+  - becomes more subtle
+  - CTA becomes outlined/subtle
+  - hides slightly while scrolling down
+  - returns when scrolling up or hovered
+- Replaced remaining Monty references with Millionz
+- Signature/sign-off now uses Millionz • Founder, Sovereign City
 
 Upload/replace:
 - index.html
