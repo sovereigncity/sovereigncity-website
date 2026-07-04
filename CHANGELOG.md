@@ -1,14 +1,26 @@
-# Sovereign City v1.1 — The Origin
+# Sovereign City v1.0.1 — Restore Premium Scroll Navigation
 
-## Added
-- New `origin.html` page: **The Origin — Why Sovereign City Exists**.
-- Premium editorial layout matching the existing Sovereign City visual system.
-- Founder sign-off using the Millionz signature asset.
-- CTA to join The Sovereign Dispatch as a Founding Sovereign Builder.
+## What this release does
+- Restores the premium scroll-aware navigation behaviour on:
+  - index.html
+  - manifesto.html
+  - vault.html
 
-## Updated
-- Navigation links updated across `index.html`, `manifesto.html`, `vault.html`, and `builders.html` to include **The Origin**.
-- Footers updated where appropriate to include **The Origin**.
+## Behaviour restored
+- Navigation bar becomes smaller and more transparent after scrolling.
+- Logo shrinks slightly.
+- “Get the Dispatch” button becomes more subtle while scrolling.
+- Navigation gently hides when scrolling down and reappears when scrolling up or on hover.
+
+## Files changed
+- index.html
+- manifesto.html
+- vault.html
+
+## Files NOT included
+- No origin.html
+- No assets
+- No builders.html
 
 ## Install
-Upload/drag these files into the root of your GitHub repository, replacing the existing files when prompted. No asset files need changing.
+Upload only these three HTML files to the root of the GitHub repository and commit changes.
