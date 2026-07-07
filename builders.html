@@ -116,6 +116,37 @@ body.nav-hidden .nav:hover {
   margin-top:2px;
 }
 
+
+/* v1.0.2 — Kit signup form status */
+.form-message{
+  display:none;
+  margin-top:14px;
+  padding:14px 16px;
+  border-radius:14px;
+  font-size:.95rem;
+  line-height:1.45;
+  text-align:center;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(2,1,8,.42);
+  color:rgba(248,245,255,.86);
+}
+.form-message.show{display:block}
+.form-message.success{
+  border-color:rgba(114,255,181,.46);
+  box-shadow:0 0 28px rgba(114,255,181,.12);
+  color:white;
+}
+.form-message.error{
+  border-color:rgba(255,56,245,.50);
+  box-shadow:0 0 28px rgba(255,56,245,.12);
+  color:white;
+}
+.form .btn[disabled]{
+  opacity:.72;
+  cursor:not-allowed;
+  transform:none;
+}
+
 </style>
 </head>
 <body>
@@ -143,7 +174,7 @@ body.nav-hidden .nav:hover {
 <div class="counter-number">0 / 500</div>
 <div class="counter-sub">Founding Members</div>
 <div class="builder-status"><strong>Builder #000</strong><span>Waiting for you.</span></div>
-<form class="form" action="#" method="post"><input type="text" name="name" placeholder="Your Name" autocomplete="name"><input type="email" name="email" placeholder="Your Email Address" autocomplete="email" required><button class="btn" type="submit">Get the Dispatch</button></form>
+<form class="form" id="dispatch-form" action="#" method="post"><input type="text" name="name" placeholder="Your Name" autocomplete="name"><input type="email" name="email" placeholder="Your Email Address" autocomplete="email" required><button class="btn" type="submit">Get the Dispatch</button></form><div class="form-message" id="dispatch-form-message" role="status" aria-live="polite"></div>
 <div class="trust"><div class="trust-item"><span>✓</span><div>Free forever for Founding Sovereign Builders</div></div><div class="trust-item"><span>✓</span><div>We will never sell your data</div></div><div class="trust-item"><span>✓</span><div>One thoughtful email each week</div></div><div class="trust-item"><span>✓</span><div>Unsubscribe with one click</div></div></div>
 <div class="safe">🔒 You’re safe with us. We respect your privacy.</div>
 </aside>
@@ -189,6 +220,61 @@ body.nav-hidden .nav:hover {
   }, { passive: true });
 
   updateNav();
+})();
+</script>
+
+
+<script>
+(function () {
+  const form = document.getElementById("dispatch-form");
+  const message = document.getElementById("dispatch-form-message");
+  const endpoint = "https://sovereigncity-api.sovereigncitydispatch.workers.dev/";
+
+  if (!form || !message) return;
+
+  function setMessage(text, type) {
+    message.textContent = text;
+    message.className = "form-message show " + type;
+  }
+
+  form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const emailInput = form.querySelector('input[name="email"]');
+    const button = form.querySelector('button[type="submit"]');
+    const email = (emailInput && emailInput.value ? emailInput.value : "").trim();
+
+    if (!email || !email.includes("@")) {
+      setMessage("Please enter a valid email address.", "error");
+      return;
+    }
+
+    const originalText = button.textContent;
+    button.disabled = true;
+    button.textContent = "Joining...";
+
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || "Signup failed.");
+      }
+
+      form.reset();
+      setMessage("Welcome, Sovereign Builder. You're now on the list.", "success");
+      button.textContent = "Joined";
+    } catch (error) {
+      setMessage("Something went wrong. Please try again in a moment.", "error");
+      button.disabled = false;
+      button.textContent = originalText;
+    }
+  });
 })();
 </script>
 
