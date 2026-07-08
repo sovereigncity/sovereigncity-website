@@ -117,7 +117,7 @@ body.nav-hidden .nav:hover {
 }
 
 
-/* v1.0.2 — Kit signup form status */
+/* v1.0.3 — Kit signup + dynamic Founding Sovereign Builders counter */
 .form-message{
   display:none;
   margin-top:14px;
@@ -146,6 +146,10 @@ body.nav-hidden .nav:hover {
   cursor:not-allowed;
   transform:none;
 }
+.counter-number span{
+  display:inline-block;
+  min-width:.9em;
+}
 
 </style>
 </head>
@@ -171,9 +175,9 @@ body.nav-hidden .nav:hover {
 <div class="signup-wrap">
 <aside class="signup-card" id="signup">
 <div class="counter-label">Founding Sovereign Builders</div>
-<div class="counter-number">0 / 500</div>
+<div class="counter-number"><span id="builder-count">0</span> / 500</div>
 <div class="counter-sub">Founding Members</div>
-<div class="builder-status"><strong>Builder #000</strong><span>Waiting for you.</span></div>
+<div class="builder-status"><strong id="builder-id">Builder #000</strong><span>Waiting for you.</span></div>
 <form class="form" id="dispatch-form" action="#" method="post"><input type="text" name="name" placeholder="Your Name" autocomplete="name"><input type="email" name="email" placeholder="Your Email Address" autocomplete="email" required><button class="btn" type="submit">Get the Dispatch</button></form><div class="form-message" id="dispatch-form-message" role="status" aria-live="polite"></div>
 <div class="trust"><div class="trust-item"><span>✓</span><div>Free forever for Founding Sovereign Builders</div></div><div class="trust-item"><span>✓</span><div>We will never sell your data</div></div><div class="trust-item"><span>✓</span><div>One thoughtful email each week</div></div><div class="trust-item"><span>✓</span><div>Unsubscribe with one click</div></div></div>
 <div class="safe">🔒 You’re safe with us. We respect your privacy.</div>
@@ -228,53 +232,85 @@ body.nav-hidden .nav:hover {
 (function () {
   const form = document.getElementById("dispatch-form");
   const message = document.getElementById("dispatch-form-message");
+  const countEl = document.getElementById("builder-count");
+  const builderIdEl = document.getElementById("builder-id");
   const endpoint = "https://sovereigncity-api.sovereigncitydispatch.workers.dev/";
 
-  if (!form || !message) return;
-
   function setMessage(text, type) {
+    if (!message) return;
     message.textContent = text;
     message.className = "form-message show " + type;
   }
 
-  form.addEventListener("submit", async function (event) {
-    event.preventDefault();
+  function formatBuilderNumber(count) {
+    return String(Math.max(0, count)).padStart(3, "0");
+  }
 
-    const emailInput = form.querySelector('input[name="email"]');
-    const button = form.querySelector('button[type="submit"]');
-    const email = (emailInput && emailInput.value ? emailInput.value : "").trim();
-
-    if (!email || !email.includes("@")) {
-      setMessage("Please enter a valid email address.", "error");
-      return;
-    }
-
-    const originalText = button.textContent;
-    button.disabled = true;
-    button.textContent = "Joining...";
+  async function updateBuilderCount() {
+    if (!countEl) return;
 
     try {
-      const response = await fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email })
-      });
-
+      const response = await fetch(endpoint + "count", { method: "GET" });
       const data = await response.json();
 
-      if (!response.ok || !data.success) {
-        throw new Error(data.error || "Signup failed.");
+      if (!response.ok || !data.success) return;
+
+      const count = Number(data.count || 0);
+      countEl.textContent = count;
+
+      if (builderIdEl) {
+        builderIdEl.textContent = "Builder #" + formatBuilderNumber(count + 1);
+      }
+    } catch (error) {
+      // Keep the hardcoded fallback if the count endpoint is unavailable.
+    }
+  }
+
+  if (form && message) {
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      const emailInput = form.querySelector('input[name="email"]');
+      const nameInput = form.querySelector('input[name="name"]');
+      const button = form.querySelector('button[type="submit"]');
+      const email = (emailInput && emailInput.value ? emailInput.value : "").trim();
+      const firstName = (nameInput && nameInput.value ? nameInput.value : "").trim();
+
+      if (!email || !email.includes("@")) {
+        setMessage("Please enter a valid email address.", "error");
+        return;
       }
 
-      form.reset();
-      setMessage("Welcome, Sovereign Builder. You're now on the list.", "success");
-      button.textContent = "Joined";
-    } catch (error) {
-      setMessage("Something went wrong. Please try again in a moment.", "error");
-      button.disabled = false;
-      button.textContent = originalText;
-    }
-  });
+      const originalText = button.textContent;
+      button.disabled = true;
+      button.textContent = "Joining...";
+
+      try {
+        const response = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: email, firstName: firstName })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+          throw new Error(data.error || "Signup failed.");
+        }
+
+        form.reset();
+        setMessage("Welcome, Sovereign Builder. You're now on the list.", "success");
+        button.textContent = "Joined";
+        await updateBuilderCount();
+      } catch (error) {
+        setMessage("Something went wrong. Please try again in a moment.", "error");
+        button.disabled = false;
+        button.textContent = originalText;
+      }
+    });
+  }
+
+  updateBuilderCount();
 })();
 </script>
 
