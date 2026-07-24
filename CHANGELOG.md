@@ -26,3 +26,10 @@ Upload `builders.html` to the root of the GitHub repository and replace the exis
 Commit changes, wait for GitHub Pages to deploy, then test the form on the live site.
 
 - Replaced Phones Collection with v4 minimal decision-first flow.
+
+## 2026-07-24 — Phones Sprint 2
+- Replaced generic phone illustrations with original Sovereign City product-style renders.
+- Shortened card copy and changed CTAs to “See Why We Recommend It”.
+- Renamed “Best Premium” to “Premium Choice”.
+- Added a universal recommendation-standards panel beneath all three phones.
+- Refined badges, hover motion and visual hierarchy across desktop and mobile.
