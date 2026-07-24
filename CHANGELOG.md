@@ -24,3 +24,5 @@ https://sovereigncity-api.sovereigncitydispatch.workers.dev/
 ## Install
 Upload `builders.html` to the root of the GitHub repository and replace the existing file.
 Commit changes, wait for GitHub Pages to deploy, then test the form on the live site.
+
+- Replaced Phones Collection with v4 minimal decision-first flow.
