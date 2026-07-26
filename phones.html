@@ -133,20 +133,42 @@ section:has(.phone-grid)>.wrap{width:min(1280px,calc(100% - 54px))}.phone-grid{g
 }
 
 
-/* Sprint 2.4 — final polish */
+/* Sprint 2.5 — final polish + protected badge layer */
 .hero{padding:112px 0 12px !important;}
 .phone-grid{padding-top:8px !important;}
+
 .phone-card.featured{
   transform:scale(1.02);
 }
+
 .phone-card:hover{
   transform:translateY(-8px);
 }
+
 .card-action{
   transition:all .22s ease;
 }
+
 .card-action:hover{
   box-shadow:0 0 24px rgba(68,220,255,.18);
+}
+
+/* Protected badge component: always above card border */
+.phone-grid .phone-card .badge{
+  position:relative;
+  z-index:20;
+  background:#080713 !important;
+  box-shadow:0 0 0 8px #080713;
+}
+
+.phone-grid .phone-card:first-child .badge{
+  background:#080713 !important;
+  box-shadow:0 0 0 8px #080713;
+}
+
+.phone-grid .phone-card:nth-child(3) .badge{
+  background:#080713 !important;
+  box-shadow:0 0 0 8px #080713;
 }
 
 </style>
