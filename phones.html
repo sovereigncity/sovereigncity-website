@@ -133,16 +133,20 @@ section:has(.phone-grid)>.wrap{width:min(1280px,calc(100% - 54px))}.phone-grid{g
 }
 
 
-/* Sprint 2.3 — remove card border line behind recommendation badges */
-.phone-grid .phone-card .badge{
-  position: relative;
-  z-index: 10;
-  background: var(--panel) !important;
-  box-shadow: 0 0 0 8px var(--panel);
+/* Sprint 2.4 — final polish */
+.hero{padding:112px 0 12px !important;}
+.phone-grid{padding-top:8px !important;}
+.phone-card.featured{
+  transform:scale(1.02);
 }
-.phone-grid .phone-card.featured .badge{
-  background: var(--panel2) !important;
-  box-shadow: 0 0 0 8px var(--panel2);
+.phone-card:hover{
+  transform:translateY(-8px);
+}
+.card-action{
+  transition:all .22s ease;
+}
+.card-action:hover{
+  box-shadow:0 0 24px rgba(68,220,255,.18);
 }
 
 </style>

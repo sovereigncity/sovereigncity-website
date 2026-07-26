@@ -1,5 +1,5 @@
-# Changelog
-
-## Sprint 2.3 — Badge border-line fix
-- Removed the card border line showing through the Best Value, Best Overall, and Premium Choice badges.
-- Preserved the existing phone sizing, card layout, and spacing.
+# Sprint 2.4
+- Reduced hero height.
+- Brought cards higher.
+- Slight emphasis on featured card.
+- Improved button hover.
