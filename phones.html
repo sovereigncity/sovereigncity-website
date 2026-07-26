@@ -132,6 +132,19 @@ section:has(.phone-grid)>.wrap{width:min(1280px,calc(100% - 54px))}.phone-grid{g
   .phone-grid .phone-card .badge{margin-top:-43px;}
 }
 
+
+/* Sprint 2.3 — remove card border line behind recommendation badges */
+.phone-grid .phone-card .badge{
+  position: relative;
+  z-index: 10;
+  background: var(--panel) !important;
+  box-shadow: 0 0 0 8px var(--panel);
+}
+.phone-grid .phone-card.featured .badge{
+  background: var(--panel2) !important;
+  box-shadow: 0 0 0 8px var(--panel2);
+}
+
 </style>
 </head>
 <body>
