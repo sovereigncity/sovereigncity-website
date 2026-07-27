@@ -389,122 +389,6 @@
       gap: 18px;
     }
 
-    .tools-feature {
-      padding: 78px 0 92px;
-    }
-
-    .tools-panel {
-      position: relative;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(260px, .7fr);
-      gap: 38px;
-      align-items: center;
-      padding: 46px;
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: 34px;
-      background:
-        radial-gradient(circle at 86% 20%, rgba(53,233,255,.13), transparent 30%),
-        radial-gradient(circle at 14% 90%, rgba(255,56,245,.14), transparent 34%),
-        rgba(10, 6, 22, .68);
-      backdrop-filter: blur(22px);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.07),
-        0 28px 100px rgba(0,0,0,.28);
-    }
-
-    .tools-panel::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: linear-gradient(120deg, rgba(255,255,255,.05), transparent 26%, transparent 72%, rgba(53,233,255,.04));
-    }
-
-    .tools-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      margin-bottom: 18px;
-      color: var(--gold);
-      font-size: .82rem;
-      font-weight: 900;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .tools-panel h2 {
-      position: relative;
-      margin: 0;
-      max-width: 760px;
-      font-size: clamp(2.35rem, 5.3vw, 4.85rem);
-      line-height: .94;
-      letter-spacing: -.065em;
-      text-transform: uppercase;
-    }
-
-    .tools-panel p {
-      position: relative;
-      max-width: 700px;
-      margin: 24px 0 0;
-      color: var(--soft);
-      font-size: 1.08rem;
-      line-height: 1.72;
-    }
-
-    .tools-action {
-      position: relative;
-      margin-top: 30px;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      min-height: 58px;
-      padding: 0 27px;
-      border-radius: 16px;
-      color: white;
-      text-decoration: none;
-      font-weight: 920;
-      border: 1px solid rgba(255,255,255,.22);
-      background: linear-gradient(135deg, var(--pink), var(--violet));
-      box-shadow: 0 0 38px rgba(255,56,245,.30);
-      transition: .22s ease;
-    }
-
-    .tools-action:hover {
-      transform: translateY(-3px);
-      border-color: rgba(53,233,255,.62);
-      box-shadow: 0 0 48px rgba(53,233,255,.22);
-    }
-
-    .tools-visual {
-      position: relative;
-      min-height: 290px;
-      display: grid;
-      place-items: center;
-    }
-
-    .tools-orbit {
-      width: min(290px, 72vw);
-      aspect-ratio: 1;
-      display: grid;
-      place-items: center;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.12);
-      background:
-        radial-gradient(circle, rgba(255,56,245,.16), rgba(53,233,255,.06) 48%, transparent 70%);
-      box-shadow:
-        0 0 70px rgba(255,56,245,.18),
-        inset 0 0 60px rgba(53,233,255,.07);
-      animation: breathe 6s ease-in-out infinite;
-    }
-
-    .tools-phone {
-      font-size: clamp(5.6rem, 11vw, 8.2rem);
-      filter:
-        drop-shadow(0 0 18px rgba(53,233,255,.32))
-        drop-shadow(0 0 34px rgba(255,56,245,.24));
-    }
-
     .card {
       border: 1px solid rgba(255,255,255,.12);
       border-radius: 30px;
@@ -650,27 +534,6 @@
 
       .hero-copy { max-width: 94%; }
 
-      .tools-feature { padding: 58px 0 70px; }
-
-      .tools-panel {
-        grid-template-columns: 1fr;
-        padding: 30px 24px;
-        gap: 18px;
-      }
-
-      .tools-visual {
-        min-height: 210px;
-      }
-
-      .tools-orbit {
-        width: min(220px, 66vw);
-      }
-
-      .tools-action {
-        width: 100%;
-        justify-content: center;
-      }
-
       .buttons { flex-direction: column; }
 
       .btn {
@@ -748,26 +611,53 @@ body.nav-hidden .nav:hover {
   opacity: .95;
 }
 
+
+/* v1.2 — Universal Sovereign City navigation */
+.navlinks a.active {
+  color: white;
+  background: rgba(255,255,255,.09);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
+}
+
+.navlinks .join.active {
+  background: linear-gradient(135deg, var(--pink), var(--violet));
+  box-shadow: 0 0 34px rgba(255,56,245,.44), inset 0 0 0 1px rgba(255,255,255,.10);
+}
+
+@media (max-width: 760px) {
+  .nav {
+    border-radius: 24px;
+  }
+
+  .navlinks {
+    gap: 4px;
+  }
+
+  .navlinks a {
+    padding: 9px 10px;
+  }
+}
+
 </style>
 </head>
 
 <body>
   <div class="ambient"><span></span><span></span></div>
 
-  <nav class="nav">
-    <a class="brand" href="#">
-      <img src="assets/sovereign-city-logo.png" alt="Sovereign City">
-      <span>Sovereign City</span>
-    </a>
-
-    <div class="navlinks">
-      <a href="manifesto.html">Manifesto</a>
-      <a href="phones.html">Phones</a>
-      <a href="#pillars">Pillars</a>
-      <a href="vault.html">Vault</a>
-      <a class="join" href="builders.html">Get the Dispatch</a>
-    </div>
-  </nav>
+  <nav class="nav" aria-label="Primary navigation">
+  <a class="brand" href="index.html">
+    <img src="assets/sovereign-city-logo.png" alt="Sovereign City">
+    <span>Sovereign City</span>
+  </a>
+  <div class="navlinks">
+    <a class="active" aria-current="page" href="index.html">Home</a>
+    <a href="manifesto.html">Manifesto</a>
+    <a href="origin.html">Origin</a>
+    <a href="phones.html">Phones</a>
+    <a href="vault.html">Vault</a>
+    <a class="join" href="builders.html">Get the Dispatch</a>
+  </div>
+</nav>
 
   <main>
     <section class="hero">
@@ -806,29 +696,6 @@ body.nav-hidden .nav:hover {
 </section>
 
     <div class="below">
-      <section class="tools-feature" aria-labelledby="recommended-tools-title">
-        <div class="wrap">
-          <div class="tools-panel">
-            <div>
-              <div class="tools-kicker">Recommended Tools · Privacy Hardware</div>
-              <h2 id="recommended-tools-title">Choose a phone that protects your freedom.</h2>
-              <p>
-                The right phone is one of the most important privacy decisions you can make.
-                Compare the best GrapheneOS-compatible Google Pixels for value, performance
-                and long-term support.
-              </p>
-              <a class="tools-action" href="phones.html">Compare Privacy Phones →</a>
-            </div>
-
-            <div class="tools-visual" aria-hidden="true">
-              <div class="tools-orbit">
-                <div class="tools-phone">📱</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <div class="divider"></div>
 
       <section class="content" id="manifesto">
@@ -916,15 +783,19 @@ body.nav-hidden .nav:hover {
   </main>
 
   <footer>
-    <div class="wrap footer-inner">
-      <div>Sovereign City © 2026 • Live by Design. Not by Default.</div>
-      <div class="footer-links">
-        <a href="builders.html">Get the Dispatch</a>
-        <a href="manifesto.html">Manifesto</a>
-        <a href="#">X</a>
-      </div>
+  <div class="wrap footer-inner">
+    <div>© 2026 Sovereign City. Live by Design. Not by Default.</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="manifesto.html">Manifesto</a>
+      <a href="origin.html">Origin</a>
+      <a href="phones.html">Phones</a>
+      <a href="vault.html">Vault</a>
+      <a href="https://x.com/SovereignCityHQ" target="_blank" rel="noopener noreferrer">X</a>
+      <a href="builders.html">Get the Dispatch</a>
     </div>
-  </footer>
+  </div>
+</footer>
 
 <script>
 (function () {
