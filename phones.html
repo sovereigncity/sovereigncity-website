@@ -415,6 +415,20 @@ body.nav-hidden .nav{transform:translateX(-50%) translateY(-125%)!important;opac
 body:not(.nav-hidden) .nav{pointer-events:auto}
 @media(max-width:760px){body.scrolled .nav{width:calc(100% - 16px)!important}body.nav-hidden .nav{transform:translateX(-50%) translateY(-135%)!important}}
 </style>
+
+<style id="phones-emergency-layout-hotfix">
+/* Prevent card badges from colliding with the hero while keeping the page compact. */
+.hero{padding-bottom:22px!important;margin-bottom:0!important}
+.phone-grid{padding-top:30px!important}
+@media(max-width:920px){
+  .hero{padding-bottom:24px!important;margin-bottom:0!important}
+  .phone-grid{padding-top:32px!important}
+}
+@media(max-width:700px){
+  .hero{padding-bottom:24px!important;margin-bottom:0!important}
+  .phone-grid{padding-top:34px!important}
+}
+</style>
 </head>
 <body>
 <nav class="nav" aria-label="Primary navigation">
