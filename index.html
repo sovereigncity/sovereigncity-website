@@ -942,6 +942,51 @@ body.nav-hidden .nav{transform:translateX(-50%) translateY(-125%)!important;opac
 body:not(.nav-hidden) .nav{pointer-events:auto}
 @media(max-width:760px){body.scrolled .nav{width:calc(100% - 16px)!important}body.nav-hidden .nav{transform:translateX(-50%) translateY(-135%)!important}}
 </style>
+
+<style id="sc-tools-mobile-fix">
+/* v1.5 — Fix Recommended Tools section on mobile */
+@media (max-width: 760px) {
+  .tools-feature {
+    padding: 62px 0 74px;
+  }
+
+  .tools-panel {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 30px 22px;
+    border-radius: 26px;
+  }
+
+  .tools-panel h2 {
+    max-width: 100%;
+    font-size: clamp(2.7rem, 13vw, 4.25rem);
+    line-height: .92;
+    letter-spacing: -.06em;
+  }
+
+  .tools-panel p {
+    width: 100%;
+    max-width: none;
+    margin-top: 22px;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .tools-action {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .tools-visual {
+    min-height: 240px;
+  }
+
+  .tools-orbit {
+    width: min(240px, 68vw);
+  }
+}
+</style>
+
 </head>
 
 <body>
